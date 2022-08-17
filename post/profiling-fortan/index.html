@@ -64,10 +64,10 @@
   
     
   
-  <meta name="description" content="Ph.D. Candidate" />
+  <meta name="description" content="Fortan go &#34;brrr&#34;... but can we make it go faster? Profiling code is the best way to improve efficiency. Here you&#39;ll find a short explanation on how to do this in Fortran." />
 
   
-  <link rel="alternate" hreflang="en-us" href="https://ericboittier@githubpages.io/tag/%E5%BC%80%E6%BA%90/" />
+  <link rel="alternate" hreflang="en-us" href="https://ericboittier@githubpages.io/post/profiling-fortan/" />
 
   
   
@@ -274,8 +274,6 @@
   
 
   
-    <link rel="alternate" href="/tag/%E5%BC%80%E6%BA%90/index.xml" type="application/rss+xml" title="Eric Boittier" />
-  
 
   
     <link rel="manifest" href="/manifest.webmanifest" />
@@ -284,7 +282,7 @@
   <link rel="icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_32x32_fill_lanczos_center_3.png" />
   <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_180x180_fill_lanczos_center_3.png" />
 
-  <link rel="canonical" href="https://ericboittier@githubpages.io/tag/%E5%BC%80%E6%BA%90/" />
+  <link rel="canonical" href="https://ericboittier@githubpages.io/post/profiling-fortan/" />
 
   
   
@@ -295,7 +293,6 @@
   
   
     
-    
   
   
 
@@ -304,39 +301,92 @@
     
     
   
-  <meta property="twitter:card" content="summary" />
+  <meta property="twitter:card" content="summary_large_image" />
   
     <meta property="twitter:site" content="@wowchemy" />
     <meta property="twitter:creator" content="@wowchemy" />
   
   <meta property="og:site_name" content="Eric Boittier" />
-  <meta property="og:url" content="https://ericboittier@githubpages.io/tag/%E5%BC%80%E6%BA%90/" />
-  <meta property="og:title" content="开源 | Eric Boittier" />
-  <meta property="og:description" content="Ph.D. Candidate" /><meta property="og:image" content="https://ericboittier@githubpages.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" />
-    <meta property="twitter:image" content="https://ericboittier@githubpages.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png" /><meta property="og:locale" content="en-us" />
+  <meta property="og:url" content="https://ericboittier@githubpages.io/post/profiling-fortan/" />
+  <meta property="og:title" content="Fortran is fast. Profile your code to make it faster! | Eric Boittier" />
+  <meta property="og:description" content="Fortan go &#34;brrr&#34;... but can we make it go faster? Profiling code is the best way to improve efficiency. Here you&#39;ll find a short explanation on how to do this in Fortran." /><meta property="og:image" content="https://ericboittier@githubpages.io/post/profiling-fortan/featured.jpg" />
+    <meta property="twitter:image" content="https://ericboittier@githubpages.io/post/profiling-fortan/featured.jpg" /><meta property="og:locale" content="en-us" />
   
     
-      <meta property="og:updated_time" content="2020-12-13T00:00:00&#43;00:00" />
+      <meta
+        property="article:published_time"
+        content="2022-08-17T00:00:00&#43;00:00"
+      />
     
+    <meta property="article:modified_time" content="2022-08-17T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ericboittier@githubpages.io/post/profiling-fortan/"
+  },
+  "headline": "Fortran is fast. Profile your code to make it faster!",
+  
+  "image": [
+    "https://ericboittier@githubpages.io/post/profiling-fortan/featured.jpg"
+  ],
+  
+  "datePublished": "2022-08-17T00:00:00Z",
+  "dateModified": "2022-08-17T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Eric Boittier"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Eric Boittier",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://ericboittier@githubpages.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_192x192_fill_lanczos_center_3.png"
+    }
+  },
+  "description": "Fortan go \"brrr\"... but can we make it go faster? Profiling code is the best way to improve efficiency. Here you'll find a short explanation on how to do this in Fortran."
+}
+</script>
+
+  
+
+  
+
   
 
   
 
 
 
-  
-
-  
 
 
-
-
-
-  <title>开源 | Eric Boittier</title>
+  <title>Fortran is fast. Profile your code to make it faster! | Eric Boittier</title>
 </head>
 
 
-<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   "  >
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="page-wrapper   " data-wc-page-id="73f54d34305b16238c06c5395b9d0e5c" >
 
   
   
@@ -642,42 +692,17 @@
     
     
 
-    
-
-
-
-
-
-
-
-
-
-
-
+    <article class="article">
 
   
 
-  
-  
-  
-    
-  
-<div class="universal-wrapper pt-3">
-  <h1>开源</h1>
-
-  
-
-  
-</div>
 
 
 
-<div class="universal-wrapper">
-  
 
-  
-  
-    
+
+
+
 
 
 
@@ -692,29 +717,17 @@
 
 
   
+  
 
 
-<div class="media stream-item view-compact">
-  <div class="media-body">
+<div class="article-container pt-3">
+  <h1>Fortran is fast. Profile your code to make it faster!</h1>
 
-    <div class="section-subheading article-title mb-0 mt-0">
-      <a href="/post/getting-started/" >Welcome to Wowchemy, the website builder for Hugo</a>
-    </div>
+  
+  <p class="page-subtitle">Profiling Fortran code with gprof</p>
+  
 
-    
-    <a href="/post/getting-started/"  class="summary-link">
-      <div class="article-style">
-        Welcome 👋 We know that first impressions are important, so we&rsquo;ve populated your new site with some initial content to help you get familiar with everything in no time.
-      </div>
-    </a>
-    
-
-    <div class="stream-meta article-metadata">
-
-      
-
-      
-        
+  
 
 
 <div class="article-metadata">
@@ -727,8 +740,7 @@
     
 
   <span class="author-highlighted">
-      Eric Boittier</span>, <span >
-      吳恩達</span>
+      Eric Boittier</span>
   </div>
   
   
@@ -739,7 +751,7 @@
     
       
     
-    Dec 13, 2020
+    Aug 17, 2022
   </span>
   
 
@@ -748,7 +760,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    2 min read
   </span>
   
 
@@ -761,34 +773,218 @@
   
   <span class="middot-divider"></span>
   <span class="article-categories">
-    <i class="fas fa-folder mr-1"></i><a href="/category/demo/">Demo</a>, <a href="/category/%E6%95%99%E7%A8%8B/">教程</a></span>
+    <i class="fas fa-folder mr-1"></i><a href="/category/optimization/">optimization</a></span>
   
 
 </div>
 
-      
+  
+
+
+
+
+
+</div>
+
+
+<div class="article-header container featured-image-wrapper mt-4 mb-4" style="max-width: 563px; max-height: 402px;">
+  <div style="position: relative">
+    <img src="/post/profiling-fortan/featured_hue58bc8a91aa817f58a85d47da67a5c96_60942_1200x2500_fit_q75_h2_lanczos.webp" width="563" height="402" alt="" class="featured-image">
+    <span class="article-header-caption">Image credit: <a href="https://boardgamegeek.com/image/78330/fortran" target="_blank" rel="noopener"><strong>Boardgamegeek</strong></a></span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <h2 id="all-about-fortran">All About Fortran</h2>
+<h3 id="what-is-fortran">What is Fortran?</h3>
+<p>Fortran is a dinosaur code language. It was released around 65 years ago (date of writing) by John Backus and IBM for electric computing machines powered by the fossilized remains of dinosaurs who lived around 65 million years ago.</p>
+<p>&lsquo;Too lazy&rsquo; to write assembly, Backus wrote this compiled imperative language to save himself time when composing complicated mathematical formulas, giving rise to the &lsquo;Formula Translation&rsquo; language or FORTRAN. Nowadays, FORTRAN is considered too verbose by modern programming standards. Although much slower, Python might be considered the new Formula Translation language. Routines like the Fast Fourier Transform have been reduced to one line (np.fft()), where the number of lines of pure FORTRAN and assembly code needed are around 1 to 2 orders of magnitude longer, respectively.</p>
+<h3 id="why-fortran">Why Fortran?</h3>
+<p>Fortran is fast. Many legacy applications rely on Fortran for reasons related to speed and compatibility.</p>
+<h2 id="the-good-type-of-profiling">The Good Type of Profiling</h2>
+<h3 id="how-can-we-test-the-speed-of-our-code">How can we test the speed of our code?</h3>
+<p>Profiling is a strategy to monitor the performance of one&rsquo;s code.
+Results often show the time spent in individual routines, the number of calls, as well as the order in which routines have been accessed.</p>
+<h2 id="profiling-fortran-with-gprof">Profiling Fortran with gprof</h2>
+<p>Fortran must first be compiled with the following, additional flags:</p>
+<pre><code class="language-bash">... -pg fcheck=bounds,mem
+</code></pre>
+<p>The &lsquo;fcheck&rsquo; option allows the compiler to produce warnings for attempts at accessing undefined memory, etc.</p>
+<p>Once compiled, run your code as usual:</p>
+<pre><code class="language-bash">./yourcode 
+</code></pre>
+<p>A file named &lsquo;gmon.out&rsquo; will be created in the current directory.
+To see the results of the profiling</p>
+<pre><code class="language-bash">gprof -l -b ./yourcode &gt; gprof.log
+</code></pre>
+<p>The -g and -l flags in the compilation and profiling steps, respectively, allow for a line by line analysis of time spent during computation. Without these options, the profiler will show total time spent in each subroutine.</p>
+
     </div>
 
     
 
-  </div>
-  <div class="ml-3">
-    
-    
-    
-    <a href="/post/getting-started/" >
-      <img src="/post/getting-started/featured_hub9ee31969f44a6711206a2baf9f065b4_241861_150x0_resize_q75_h2_lanczos.webp" height="84" width="150"
-           alt="Welcome to Wowchemy, the website builder for Hugo" loading="lazy">
-    </a>
-    
-  </div>
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tag/code/">code</a>
+  
+  <a class="badge badge-light" href="/tag/fortran/">fortran</a>
+  
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <a href="https://ericboittier@githubpages.io/"><img class="avatar mr-3 avatar-circle" src="/authors/admin/avatar_hu2732ebfc543f39aa07d06625355b58c4_116570_270x270_fill_q75_lanczos_center.jpg" alt="Eric Boittier"></a>
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="https://ericboittier@githubpages.io/">Eric Boittier</a></h5>
+      <h6 class="card-subtitle">Ph.D. Candidate</h6>
+      <p class="card-text">Interested in all things science, machine learning and strategy.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/EricBoittier" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.co.uk/citations?user=pAQXUFcAAAAJ" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/ericboittier" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/ericboittier" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
 
   
 
-  
 
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</article>
   </div>
 
   <div class="page-footer">
