@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts | Eric Boittier</title>
-    <link>https://ericboittier@githubpages.io/post/</link>
-      <atom:link href="https://ericboittier@githubpages.io/post/index.xml" rel="self" type="application/rss+xml" />
-    <description>Posts</description>
+    <title>programming | Eric Boittier</title>
+    <link>https://ericboittier@githubpages.io/category/programming/</link>
+      <atom:link href="https://ericboittier@githubpages.io/category/programming/index.xml" rel="self" type="application/rss+xml" />
+    <description>programming</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 17 Aug 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>https://ericboittier@githubpages.io/media/icon_hu9ac327d6012d36714959b8b60a0f0d52_7608_512x512_fill_lanczos_center_3.png</url>
-      <title>Posts</title>
-      <link>https://ericboittier@githubpages.io/post/</link>
+      <title>programming</title>
+      <link>https://ericboittier@githubpages.io/category/programming/</link>
     </image>
     
     <item>
@@ -40,15 +40,6 @@ To see the results of the profiling&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;gprof -l -b ./yourcode &amp;gt; gprof.log
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The -g and -l flags in the compilation and profiling steps, respectively, allow for a line by line analysis of time spent during computation. Without these options, the profiler will show total time spent in each subroutine.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Notes on Baysian Optmization</title>
-      <link>https://ericboittier@githubpages.io/post/notes/</link>
-      <pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://ericboittier@githubpages.io/post/notes/</guid>
-      <description>&lt;h2 id=&#34;surrogate-models-to-the-rescue&#34;&gt;Surrogate Models to the Rescue&lt;/h2&gt;
 </description>
     </item>
     

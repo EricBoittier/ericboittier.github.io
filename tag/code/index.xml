@@ -7,7 +7,7 @@
     <description>code</description>
     <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 17 Aug 2022 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>https://ericboittier@githubpages.io/media/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_3.png</url>
+      <url>https://ericboittier@githubpages.io/media/icon_hu9ac327d6012d36714959b8b60a0f0d52_7608_512x512_fill_lanczos_center_3.png</url>
       <title>code</title>
       <link>https://ericboittier@githubpages.io/tag/code/</link>
     </image>
@@ -40,6 +40,15 @@ To see the results of the profiling&lt;/p&gt;
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;gprof -l -b ./yourcode &amp;gt; gprof.log
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The -g and -l flags in the compilation and profiling steps, respectively, allow for a line by line analysis of time spent during computation. Without these options, the profiler will show total time spent in each subroutine.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Notes on Baysian Optmization</title>
+      <link>https://ericboittier@githubpages.io/post/notes/</link>
+      <pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>https://ericboittier@githubpages.io/post/notes/</guid>
+      <description>&lt;h2 id=&#34;surrogate-models-to-the-rescue&#34;&gt;Surrogate Models to the Rescue&lt;/h2&gt;
 </description>
     </item>
     
