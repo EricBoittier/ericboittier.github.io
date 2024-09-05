@@ -20,4 +20,11 @@ Results often show the time spent in individual routines, the number of calls, a
 To see the results of the profiling&lt;/p>
 &lt;pre>&lt;code class="language-bash">gprof -l -b ./yourcode &amp;gt; gprof.log
 &lt;/code>&lt;/pre>
-&lt;p>The -g and -l flags in the compilation and profiling steps, respectively, allow for a line by line analysis of time spent during computation. Without these options, the profiler will show total time spent in each subroutine.&lt;/p></description></item><item><title>Notes on Baysian Optmization</title><link>https://ericboittier@githubpages.io/post/notes/</link><pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/post/notes/</guid><description>&lt;h2 id="surrogate-models-to-the-rescue">Surrogate Models to the Rescue&lt;/h2></description></item></channel></rss>
+&lt;p>The -g and -l flags in the compilation and profiling steps, respectively, allow for a line by line analysis of time spent during computation. Without these options, the profiler will show total time spent in each subroutine.&lt;/p></description></item><item><title>Notes on Baysian Optmization</title><link>https://ericboittier@githubpages.io/post/notes/</link><pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/post/notes/</guid><description>&lt;h2 id="surrogate-models-to-the-rescue">Surrogate Models to the Rescue&lt;/h2>
+&lt;p>If you have a cost function that is too expensive to evaluate, you should check out Bayesian Optimization.&lt;/p>
+&lt;p>The idea is to use a surrogate model to approximate the cost function and then use this model to find the best point to evaluate next.&lt;/p>
+&lt;p>The most common surrogate model is a Gaussian Process (GP), which is a distribution over functions. The GP is defined by its mean function $m(x)$ and covariance function $k(x, x&amp;rsquo;)$:&lt;/p>
+&lt;p>$$f(x) \sim \mathcal{GP}(m(x), k(x, x&amp;rsquo;))$$&lt;/p>
+&lt;p>The GP is updated with the new data point and then used to find the next point to evaluate. This is typically done by maximizing an acquisition function, such as the Expected Improvement (EI):&lt;/p>
+&lt;p>$$EI(x) = \mathbb{E}[\max(f(x) - f(x^+), 0)]$$&lt;/p>
+&lt;p>where $f(x^+)$ is the current best observed value.&lt;/p></description></item></channel></rss>
