@@ -115,18 +115,7 @@ To see the results of the profiling&lt;/p&gt;
       <link>https://ericboittier@githubpages.io/publication/glycotorch/</link>
       <pubDate>Wed, 01 Jul 2020 00:00:00 +0000</pubDate>
       <guid>https://ericboittier@githubpages.io/publication/glycotorch/</guid>
-      <description>&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Click the &lt;em&gt;Cite&lt;/em&gt; button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;alert alert-note&#34;&gt;
-  &lt;div&gt;
-    Create your slides in Markdown - click the &lt;em&gt;Slides&lt;/em&gt; button to check out the example.
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;Supplementary notes can be added here, including &lt;a href=&#34;https://wowchemy.com/docs/writing-markdown-latex/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;code, math, and images&lt;/a&gt;.&lt;/p&gt;
-</description>
+      <description></description>
     </item>
     
     <item>
@@ -277,6 +266,18 @@ $$&lt;/p&gt;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://ericboittier@githubpages.io/admin/config.yml</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Eric Boittier</title>
+      <link>https://ericboittier@githubpages.io/authors/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://ericboittier@githubpages.io/authors/admin/</guid>
+      <description>&lt;p&gt;A blog about chemistry, computation and game theory.&lt;/p&gt;
+&lt;!-- I&#39;m a Ph.D. candidate working under the supervision of Prof. Markus Meuwly and Prof. O. Anatole von Lilienfeld. --&gt;
+&lt;p&gt;
+  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Download my &lt;a href=&#34;https://ericboittier@githubpages.io/uploads/EricBoittier_CV.pdf&#34; target=&#34;_blank&#34;&gt;resumé&lt;/a&gt;.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

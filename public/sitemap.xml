@@ -12,11 +12,13 @@
   <url>
     <loc></loc><lastmod>2022-08-17T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
+    <loc></loc><lastmod>2022-08-17T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://ericboittier@githubpages.io/authors/</loc><lastmod>2022-08-17T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
     <loc>https://ericboittier@githubpages.io/categories/</loc><lastmod>2022-08-17T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://ericboittier@githubpages.io/tag/code/</loc><lastmod>2022-08-17T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
-  <url>
-    <loc></loc><lastmod>2022-08-17T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
     <loc>https://ericboittier@githubpages.io/tag/fortran/</loc><lastmod>2022-08-17T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
@@ -74,4 +76,6 @@
   <url>
     <loc>https://ericboittier@githubpages.io/project/example/</loc><lastmod>2016-04-27T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
   <url>
-    <loc>https://ericboittier@githubpages.io/project/</loc><lastmod>2016-04-27T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url></urlset>
+    <loc>https://ericboittier@githubpages.io/project/</loc><lastmod>2016-04-27T00:00:00+00:00</lastmod><changefreq>weekly</changefreq></url>
+  <url>
+    <loc>https://ericboittier@githubpages.io/authors/admin/</loc><changefreq>weekly</changefreq></url></urlset>
