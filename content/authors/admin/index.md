@@ -70,8 +70,8 @@ email: ""
 highlight_name: true
 ---
 
-A blog about chemistry, computation and game theory.
+A blog about machine learning for the physical sciences, with a focus on molecular dynamics simulations.
 
 <!-- I'm a Ph.D. candidate working under the supervision of Prof. Markus Meuwly and Prof. O. Anatole von Lilienfeld. -->
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/EricBoittier_CV.pdf" "newtab" >}}resumé{{< /staticref >}}.
+<!-- {{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/EricBoittier_CV.pdf" "newtab" >}}resumé{{< /staticref >}}. -->
