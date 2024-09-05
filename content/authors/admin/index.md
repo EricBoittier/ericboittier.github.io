@@ -27,7 +27,7 @@ education:
   courses:
     - course: Ph.D. -  Machine Learning for Physical Chemistry
       institution: The University of Basel, Switzerland
-      year: (2024, expected)
+      year: (2025, expected)
     #  - course: Honours - Computational Chemistry
     #    institution: The University of Queensland, Australia
     #    year: (2019)
