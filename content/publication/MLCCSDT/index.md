@@ -1,14 +1,14 @@
 ---
-title: "Transfer Learning to CCSD(T): Accurate Anharmonic Frequencies from Machine Learning Models" 
+title: "Transfer Learning to CCSD(T): Accurate Anharmonic Frequencies from Machine Learning Models"
 
 # Authors
-# If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here 
+# If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here
 # and it will be replaced with their full name and linked to their profile.
 authors:
-- Silvan Kaeser
-- admin
-- Meenu Upadhyay 
-- Marky Meuwly
+  - Silvan Kaeser
+  - Eric Boittier
+  - Meenu Upadhyay
+  - Marky Meuwly
 
 # Author notes (optional)
 #author_notes:
@@ -28,7 +28,7 @@ publishDate: "2017-01-01T00:00:00Z"
 publication_types: ["1"]
 
 # Publication name and optional abbreviated publication name.
-publication: Journal of Chemical Theory and Computation 
+publication: Journal of Chemical Theory and Computation
 publication_short: J. Chem. Theory Comput
 
 abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.
@@ -40,7 +40,6 @@ tags: []
 
 # Display this page in the Featured widget?
 featured: true
-
 # Custom links (uncomment lines below)
 # links:
 # - name: Custom Link
@@ -56,7 +55,7 @@ featured: true
 #url_video: ''
 
 # Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder. 
+# To use, add an image named `featured.jpg/png` to your page's folder.
 #image:
 #  caption: 'Image credit: [**Unsplash**](https://unsplash.com/photos/pLCdAaMFLTE)'
 #  focal_point: ""
@@ -79,11 +78,11 @@ featured: true
 ---
 
 {{% callout note %}}
-Click the *Cite* button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+Click the _Cite_ button above to demo the feature to enable visitors to import publication metadata into their reference management software.
 {{% /callout %}}
 
 {{% callout note %}}
-Create your slides in Markdown - click the *Slides* button to check out the example.
+Create your slides in Markdown - click the _Slides_ button to check out the example.
 {{% /callout %}}
 
 Supplementary notes can be added here, including [code, math, and images](https://wowchemy.com/docs/writing-markdown-latex/).

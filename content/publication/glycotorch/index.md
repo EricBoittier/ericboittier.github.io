@@ -8,16 +8,10 @@ title: "GlycoTorch Vina: Docking Designed and Tested for Glycosaminoglycans"
 # and it will be replaced with their full name and linked to their profile.
 
 authors:
-  - admin
+  - Eric Boittier
   - Jed M Burns
   - Neha S Gandhi
   - Vito Ferro
-
-# Author notes (optional)
-
-author_notes:
-  - "Equal contribution"
-  - "Equal contribution"
 
 date: "2020-07-01T00:00:00Z"
 doi: "10.1021/acs.jcim.0c00373"
