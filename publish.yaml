@@ -1,0 +1,2 @@
+- name: Generate Pagefind search index
+  run: npx pagefind --source "public"
