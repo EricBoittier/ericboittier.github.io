@@ -1,47 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>fortran | Eric Boittier</title>
-    <link>https://ericboittier@githubpages.io/tag/fortran/</link>
-      <atom:link href="https://ericboittier@githubpages.io/tag/fortran/index.xml" rel="self" type="application/rss+xml" />
-    <description>fortran</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 17 Aug 2022 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>https://ericboittier@githubpages.io/media/icon_hu9ac327d6012d36714959b8b60a0f0d52_7608_512x512_fill_lanczos_center_3.png</url>
-      <title>fortran</title>
-      <link>https://ericboittier@githubpages.io/tag/fortran/</link>
-    </image>
-    
-    <item>
-      <title>Fortran is fast. Profile your code to make it faster!</title>
-      <link>https://ericboittier@githubpages.io/post/profiling-fortan/</link>
-      <pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>https://ericboittier@githubpages.io/post/profiling-fortan/</guid>
-      <description>&lt;h2 id=&#34;all-about-fortran&#34;&gt;All About Fortran&lt;/h2&gt;
-&lt;h3 id=&#34;what-is-fortran&#34;&gt;What is Fortran?&lt;/h3&gt;
-&lt;p&gt;Fortran is a dinosaur code language. It was released around 65 years ago (date of writing) by John Backus and IBM for electric computing machines powered by the fossilized remains of dinosaurs who lived around 65 million years ago.&lt;/p&gt;
-&lt;p&gt;&amp;lsquo;Too lazy&amp;rsquo; to write assembly, Backus wrote this compiled imperative language to save himself time when composing complicated mathematical formulas, giving rise to the &amp;lsquo;Formula Translation&amp;rsquo; language or FORTRAN. Nowadays, FORTRAN is considered too verbose by modern programming standards. Although much slower, Python might be considered the new Formula Translation language. Routines like the Fast Fourier Transform have been reduced to one line (np.fft()), where the number of lines of pure FORTRAN and assembly code needed are around 1 to 2 orders of magnitude longer, respectively.&lt;/p&gt;
-&lt;h3 id=&#34;why-fortran&#34;&gt;Why Fortran?&lt;/h3&gt;
-&lt;p&gt;Fortran is fast. Many legacy applications rely on Fortran for reasons related to speed and compatibility.&lt;/p&gt;
-&lt;h2 id=&#34;the-good-type-of-profiling&#34;&gt;The Good Type of Profiling&lt;/h2&gt;
-&lt;h3 id=&#34;how-can-we-test-the-speed-of-our-code&#34;&gt;How can we test the speed of our code?&lt;/h3&gt;
-&lt;p&gt;Profiling is a strategy to monitor the performance of one&amp;rsquo;s code.
-Results often show the time spent in individual routines, the number of calls, as well as the order in which routines have been accessed.&lt;/p&gt;
-&lt;h2 id=&#34;profiling-fortran-with-gprof&#34;&gt;Profiling Fortran with gprof&lt;/h2&gt;
-&lt;p&gt;Fortran must first be compiled with the following, additional flags:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;... -pg fcheck=bounds,mem
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The &amp;lsquo;fcheck&amp;rsquo; option allows the compiler to produce warnings for attempts at accessing undefined memory, etc.&lt;/p&gt;
-&lt;p&gt;Once compiled, run your code as usual:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;./yourcode 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;A file named &amp;lsquo;gmon.out&amp;rsquo; will be created in the current directory.
-To see the results of the profiling&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;gprof -l -b ./yourcode &amp;gt; gprof.log
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The -g and -l flags in the compilation and profiling steps, respectively, allow for a line by line analysis of time spent during computation. Without these options, the profiler will show total time spent in each subroutine.&lt;/p&gt;
-</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>fortran | Eric Boittier</title><link>https://ericboittier@githubpages.io/tag/fortran/</link><atom:link href="https://ericboittier@githubpages.io/tag/fortran/index.xml" rel="self" type="application/rss+xml"/><description>fortran</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 17 Aug 2022 00:00:00 +0000</lastBuildDate><image><url>https://ericboittier@githubpages.io/media/icon_hu9ac327d6012d36714959b8b60a0f0d52_7608_512x512_fill_lanczos_center_3.png</url><title>fortran</title><link>https://ericboittier@githubpages.io/tag/fortran/</link></image><item><title>Fortran is fast. Profile your code to make it faster!</title><link>https://ericboittier@githubpages.io/post/profiling-fortan/</link><pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/post/profiling-fortan/</guid><description>&lt;h2 id="all-about-fortran">All About Fortran&lt;/h2>
+&lt;h3 id="what-is-fortran">What is Fortran?&lt;/h3>
+&lt;p>Fortran is a dinosaur code language. It was released around 65 years ago (date of writing) by John Backus and IBM for electric computing machines powered by the fossilized remains of dinosaurs who lived around 65 million years ago.&lt;/p>
+&lt;p>&amp;lsquo;Too lazy&amp;rsquo; to write assembly, Backus wrote this compiled imperative language to save himself time when composing complicated mathematical formulas, giving rise to the &amp;lsquo;Formula Translation&amp;rsquo; language or FORTRAN. Nowadays, FORTRAN is considered too verbose by modern programming standards. Although much slower, Python might be considered the new Formula Translation language. Routines like the Fast Fourier Transform have been reduced to one line (np.fft()), where the number of lines of pure FORTRAN and assembly code needed are around 1 to 2 orders of magnitude longer, respectively.&lt;/p>
+&lt;h3 id="why-fortran">Why Fortran?&lt;/h3>
+&lt;p>Fortran is fast. Many legacy applications rely on Fortran for reasons related to speed and compatibility.&lt;/p>
+&lt;h2 id="the-good-type-of-profiling">The Good Type of Profiling&lt;/h2>
+&lt;h3 id="how-can-we-test-the-speed-of-our-code">How can we test the speed of our code?&lt;/h3>
+&lt;p>Profiling is a strategy to monitor the performance of one&amp;rsquo;s code.
+Results often show the time spent in individual routines, the number of calls, as well as the order in which routines have been accessed.&lt;/p>
+&lt;h2 id="profiling-fortran-with-gprof">Profiling Fortran with gprof&lt;/h2>
+&lt;p>Fortran must first be compiled with the following, additional flags:&lt;/p>
+&lt;pre>&lt;code class="language-bash">... -pg fcheck=bounds,mem
+&lt;/code>&lt;/pre>
+&lt;p>The &amp;lsquo;fcheck&amp;rsquo; option allows the compiler to produce warnings for attempts at accessing undefined memory, etc.&lt;/p>
+&lt;p>Once compiled, run your code as usual:&lt;/p>
+&lt;pre>&lt;code class="language-bash">./yourcode
+&lt;/code>&lt;/pre>
+&lt;p>A file named &amp;lsquo;gmon.out&amp;rsquo; will be created in the current directory.
+To see the results of the profiling&lt;/p>
+&lt;pre>&lt;code class="language-bash">gprof -l -b ./yourcode &amp;gt; gprof.log
+&lt;/code>&lt;/pre>
+&lt;p>The -g and -l flags in the compilation and profiling steps, respectively, allow for a line by line analysis of time spent during computation. Without these options, the profiler will show total time spent in each subroutine.&lt;/p></description></item></channel></rss>

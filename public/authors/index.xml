@@ -1,28 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Authors | Eric Boittier</title>
-    <link>https://ericboittier@githubpages.io/authors/</link>
-      <atom:link href="https://ericboittier@githubpages.io/authors/index.xml" rel="self" type="application/rss+xml" />
-    <description>Authors</description>
-    <generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 17 Aug 2022 00:00:00 +0000</lastBuildDate>
-    <image>
-      <url>https://ericboittier@githubpages.io/media/icon_hu9ac327d6012d36714959b8b60a0f0d52_7608_512x512_fill_lanczos_center_3.png</url>
-      <title>Authors</title>
-      <link>https://ericboittier@githubpages.io/authors/</link>
-    </image>
-    
-    <item>
-      <title>Eric Boittier</title>
-      <link>https://ericboittier@githubpages.io/authors/admin/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://ericboittier@githubpages.io/authors/admin/</guid>
-      <description>&lt;p&gt;A blog about chemistry, computation and game theory.&lt;/p&gt;
-&lt;!-- I&#39;m a Ph.D. candidate working under the supervision of Prof. Markus Meuwly and Prof. O. Anatole von Lilienfeld. --&gt;
-&lt;p&gt;
-  &lt;i class=&#34;fas fa-download  pr-1 fa-fw&#34;&gt;&lt;/i&gt; Download my &lt;a href=&#34;https://ericboittier@githubpages.io/uploads/EricBoittier_CV.pdf&#34; target=&#34;_blank&#34;&gt;resumé&lt;/a&gt;.&lt;/p&gt;
-</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Authors | Eric Boittier</title><link>https://ericboittier@githubpages.io/authors/</link><atom:link href="https://ericboittier@githubpages.io/authors/index.xml" rel="self" type="application/rss+xml"/><description>Authors</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Wed, 17 Aug 2022 00:00:00 +0000</lastBuildDate><image><url>https://ericboittier@githubpages.io/media/icon_hu9ac327d6012d36714959b8b60a0f0d52_7608_512x512_fill_lanczos_center_3.png</url><title>Authors</title><link>https://ericboittier@githubpages.io/authors/</link></image><item><title>Eric Boittier</title><link>https://ericboittier@githubpages.io/authors/admin/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/authors/admin/</guid><description>&lt;p>A blog about machine learning for the physical sciences, with a focus on molecular dynamics simulations.&lt;/p>
+&lt;!-- I'm a Ph.D. candidate working under the supervision of Prof. Markus Meuwly and Prof. O. Anatole von Lilienfeld. -->
+&lt;!--
+&lt;i class="fas fa-download pr-1 fa-fw">&lt;/i> Download my &lt;a href="https://ericboittier@githubpages.io/uploads/EricBoittier_CV.pdf" target="_blank">resumé&lt;/a>. --></description></item></channel></rss>
