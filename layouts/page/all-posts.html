@@ -1,11 +1,21 @@
 {{ define "main" }}
 
+<script src="https://cdn.rawgit.com/arose/ngl/v0.10.4-1/dist/ngl.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var stage = new NGL.Stage("viewport", {backgroundColor: "white"});
+    stage.loadFile("https://files.rcsb.org/download/8u1b.pdb", {defaultRepresentation: true});
+  });
+</script>
+
 
 <div class="container" role="main">
   <div class="row">
     <h1> All Posts: </h1>
-
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <center>
+        <div id="viewport" style="width:300px; height:300px;"></div>
+      </center>
       <main>
         {{.Content }}
 
