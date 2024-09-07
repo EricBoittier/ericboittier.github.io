@@ -1,4 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Eric Boittier</title><link>https://ericboittier@githubpages.io/</link><atom:link href="https://ericboittier@githubpages.io/index.xml" rel="self" type="application/rss+xml"/><description>Eric Boittier</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate><image><url>https://ericboittier@githubpages.io/media/icon_hu9ac327d6012d36714959b8b60a0f0d52_7608_512x512_fill_lanczos_center_3.png</url><title>Eric Boittier</title><link>https://ericboittier@githubpages.io/</link></image><item><title>Kernel-based Minimal Distributed Charges: A Conformationally Dependent ESP-Model for Molecular Simulations</title><link>https://ericboittier@githubpages.io/publication/kernelmdcm/</link><pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/publication/kernelmdcm/</guid><description/></item><item><title>Fortran is fast. Profile your code to make it faster!</title><link>https://ericboittier@githubpages.io/post/profiling-fortan/</link><pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/post/profiling-fortan/</guid><description>&lt;h2 id="all-about-fortran">All About Fortran&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Eric Boittier</title><link>https://ericboittier@githubpages.io/</link><atom:link href="https://ericboittier@githubpages.io/index.xml" rel="self" type="application/rss+xml"/><description>Eric Boittier</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Mon, 01 Jul 2024 00:00:00 +0000</lastBuildDate><image><url>https://ericboittier@githubpages.io/media/icon_hu9ac327d6012d36714959b8b60a0f0d52_7608_512x512_fill_lanczos_center_3.png</url><title>Eric Boittier</title><link>https://ericboittier@githubpages.io/</link></image><item><title>Kernel-based Minimal Distributed Charges: A Conformationally Dependent ESP-Model for Molecular Simulations</title><link>https://ericboittier@githubpages.io/publication/kernelmdcm/</link><pubDate>Mon, 01 Jul 2024 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/publication/kernelmdcm/</guid><description/></item><item><title>From Juptyer to Blog</title><link>https://ericboittier@githubpages.io/post/test-notebook/</link><pubDate>Thu, 17 Aug 2023 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/post/test-notebook/</guid><description>&lt;p>The following post was made
+by creating a Jupyter notebook and converting it to a blog post,
+using the nbconvert tool.&lt;/p>
+&lt;pre>&lt;code class="language-bash">jupyter nbconvert --to markdown Test\ Notebook\ Blog\ Post.ipynb --NbConvertApp.output_files_dir=.
+&lt;/code>&lt;/pre>
+&lt;p>The command above will convert the notebook to Markdown and save it in the same directory as the notebook.
+Adding the usual Hugo front matter to the markdown file will allow it to be rendered as a blog post.
+Assuming you already have an index.md file with front matter, something like:&lt;/p>
+&lt;pre>&lt;code class="language-bash">cat 'Test Notebook Blog Post.md' | tee -a index.md
+&lt;/code>&lt;/pre>
+&lt;p>&amp;hellip;will do the trick!&lt;/p>
+&lt;h1 id="test-notebook-blog-post">Test Notebook Blog Post&lt;/h1>
+&lt;pre>&lt;code class="language-python">import matplotlib.pyplot as plt
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-python">import numpy as np
+&lt;/code>&lt;/pre>
+&lt;p>Let&amp;rsquo;s do something a bit random!&lt;/p>
+&lt;pre>&lt;code class="language-python">X = np.random.rand(100).reshape(10,10)
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code class="language-python">plt.imshow(X)
+&lt;/code>&lt;/pre>
+&lt;pre>&lt;code>&amp;lt;matplotlib.image.AxesImage at 0x1248bd4b0&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;p>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img src="./Test%20Notebook%20Blog%20Post_5_1.png" alt="png" loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p></description></item><item><title>Fortran is fast. Profile your code to make it faster!</title><link>https://ericboittier@githubpages.io/post/profiling-fortan/</link><pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/post/profiling-fortan/</guid><description>&lt;h2 id="all-about-fortran">All About Fortran&lt;/h2>
 &lt;h3 id="what-is-fortran">What is Fortran?&lt;/h3>
 &lt;p>Fortran is a dinosaur code language. It was released around 65 years ago (date of writing) by John Backus and IBM for electric computing machines powered by the fossilized remains of dinosaurs who lived around 65 million years ago.&lt;/p>
 &lt;p>&amp;lsquo;Too lazy&amp;rsquo; to write assembly, Backus wrote this compiled imperative language to save himself time when composing complicated mathematical formulas, giving rise to the &amp;lsquo;Formula Translation&amp;rsquo; language or FORTRAN. Nowadays, FORTRAN is considered too verbose by modern programming standards. Although much slower, Python might be considered the new Formula Translation language. Routines like the Fast Fourier Transform have been reduced to one line (np.fft()), where the number of lines of pure FORTRAN and assembly code needed are around 1 to 2 orders of magnitude longer, respectively.&lt;/p>
@@ -20,28 +48,7 @@ Results often show the time spent in individual routines, the number of calls, a
 To see the results of the profiling&lt;/p>
 &lt;pre>&lt;code class="language-bash">gprof -l -b ./yourcode &amp;gt; gprof.log
 &lt;/code>&lt;/pre>
-&lt;p>The -g and -l flags in the compilation and profiling steps, respectively, allow for a line by line analysis of time spent during computation. Without these options, the profiler will show total time spent in each subroutine.&lt;/p></description></item><item><title>From Juptyer to Blog</title><link>https://ericboittier@githubpages.io/post/test-notebook/</link><pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/post/test-notebook/</guid><description>&lt;h1 id="test-notebook-blog-post">Test Notebook Blog Post&lt;/h1>
-&lt;pre>&lt;code class="language-python">import matplotlib.pyplot as plt
-&lt;/code>&lt;/pre>
-&lt;pre>&lt;code class="language-python">import numpy as np
-&lt;/code>&lt;/pre>
-&lt;p>Let&amp;rsquo;s do something a bit random!&lt;/p>
-&lt;pre>&lt;code class="language-python">X = np.random.rand(100).reshape(10,10)
-&lt;/code>&lt;/pre>
-&lt;pre>&lt;code class="language-python">plt.imshow(X)
-&lt;/code>&lt;/pre>
-&lt;pre>&lt;code>&amp;lt;matplotlib.image.AxesImage at 0x1248bd4b0&amp;gt;
-&lt;/code>&lt;/pre>
-&lt;p>
-&lt;figure >
-&lt;div class="d-flex justify-content-center">
-&lt;div class="w-100" >&lt;img src="./Test%20Notebook%20Blog%20Post_5_1.png" alt="png" loading="lazy" data-zoomable />&lt;/div>
-&lt;/div>&lt;/figure>
-&lt;/p>
-&lt;pre>&lt;code class="language-python">
-&lt;/code>&lt;/pre>
-&lt;pre>&lt;code class="language-python">
-&lt;/code>&lt;/pre></description></item><item><title>Notes on Baysian Optmization</title><link>https://ericboittier@githubpages.io/post/notes/</link><pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/post/notes/</guid><description>&lt;h2 id="surrogate-models-to-the-rescue">Surrogate Models to the Rescue&lt;/h2>
+&lt;p>The -g and -l flags in the compilation and profiling steps, respectively, allow for a line by line analysis of time spent during computation. Without these options, the profiler will show total time spent in each subroutine.&lt;/p></description></item><item><title>Notes on Baysian Optmization</title><link>https://ericboittier@githubpages.io/post/notes/</link><pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/post/notes/</guid><description>&lt;h2 id="surrogate-models-to-the-rescue">Surrogate Models to the Rescue&lt;/h2>
 &lt;p>If you have a cost function that is too expensive to evaluate, you should check out Bayesian Optimization.&lt;/p>
 &lt;p>The idea is to use a surrogate model to approximate the cost function and then use this model to find the best point to evaluate next.&lt;/p>
 &lt;p>The most common surrogate model is a Gaussian Process (GP), which is a distribution over functions. The GP is defined by its mean function $m(x)$ and covariance function $k(x, x&amp;rsquo;)$:&lt;/p>
@@ -183,7 +190,7 @@ color: navy;
 &lt;hr>
 &lt;h1 id="questions">Questions?&lt;/h1>
 &lt;p>&lt;a href="https://github.com/wowchemy/wowchemy-hugo-modules/discussions" target="_blank" rel="noopener">Ask&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://wowchemy.com/docs/managing-content/#create-slides" target="_blank" rel="noopener">Documentation&lt;/a>&lt;/p></description></item><item><title>Example Project</title><link>https://ericboittier@githubpages.io/project/example/</link><pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/project/example/</guid><description>&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p>
+&lt;p>&lt;a href="https://wowchemy.com/docs/managing-content/#create-slides" target="_blank" rel="noopener">Documentation&lt;/a>&lt;/p></description></item><item><title>All Blog Posts</title><link>https://ericboittier@githubpages.io/all-posts/</link><pubDate>Thu, 28 Jun 2018 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/all-posts/</guid><description/></item><item><title>Example Project</title><link>https://ericboittier@githubpages.io/project/example/</link><pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/project/example/</guid><description>&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam. Quisque risus orci, mollis id ante sit amet, gravida egestas nisl. Sed ac tempus magna. Proin in dui enim. Donec condimentum, sem id dapibus fringilla, tellus enim condimentum arcu, nec volutpat est felis vel metus. Vestibulum sit amet erat at nulla eleifend gravida.&lt;/p>
 &lt;p>Nullam vel molestie justo. Curabitur vitae efficitur leo. In hac habitasse platea dictumst. Sed pulvinar mauris dui, eget varius purus congue ac. Nulla euismod, lorem vel elementum dapibus, nunc justo porta mi, sed tempus est est vel tellus. Nam et enim eleifend, laoreet sem sit amet, elementum sem. Morbi ut leo congue, maximus velit ut, finibus arcu. In et libero cursus, rutrum risus non, molestie leo. Nullam congue quam et volutpat malesuada. Sed risus tortor, pulvinar et dictum nec, sodales non mi. Phasellus lacinia commodo laoreet. Nam mollis, erat in feugiat consectetur, purus eros egestas tellus, in auctor urna odio at nibh. Mauris imperdiet nisi ac magna convallis, at rhoncus ligula cursus.&lt;/p>
 &lt;p>Cras aliquam rhoncus ipsum, in hendrerit nunc mattis vitae. Duis vitae efficitur metus, ac tempus leo. Cras nec fringilla lacus. Quisque sit amet risus at ipsum pharetra commodo. Sed aliquam mauris at consequat eleifend. Praesent porta, augue sed viverra bibendum, neque ante euismod ante, in vehicula justo lorem ac eros. Suspendisse augue libero, venenatis eget tincidunt ut, malesuada at lorem. Donec vitae bibendum arcu. Aenean maximus nulla non pretium iaculis. Quisque imperdiet, nulla in pulvinar aliquet, velit quam ultrices quam, sit amet fringilla leo sem vel nunc. Mauris in lacinia lacus.&lt;/p>
 &lt;p>Suspendisse a tincidunt lacus. Curabitur at urna sagittis, dictum ante sit amet, euismod magna. Sed rutrum massa id tortor commodo, vitae elementum turpis tempus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean purus turpis, venenatis a ullamcorper nec, tincidunt et massa. Integer posuere quam rutrum arcu vehicula imperdiet. Mauris ullamcorper quam vitae purus congue, quis euismod magna eleifend. Vestibulum semper vel augue eget tincidunt. Fusce eget justo sodales, dapibus odio eu, ultrices lorem. Duis condimentum lorem id eros commodo, in facilisis mauris scelerisque. Morbi sed auctor leo. Nullam volutpat a lacus quis pharetra. Nulla congue rutrum magna a ornare.&lt;/p>

@@ -12,7 +12,7 @@ projects: []
 date: "2022-08-17T00:00:00Z"
 
 # Date updated
-date: "2022-08-17T00:00:00Z"
+date: "2023-08-17T00:00:00Z"
 
 # Is this an unpublished draft?
 draft: false
@@ -39,9 +39,27 @@ tags:
 - machinelearning
 
 categories:
-- optimization
-- machine learning
+- how-to 
+- juptyer
 ---
+
+The following post was made
+by creating a Jupyter notebook and converting it to a blog post,
+using the nbconvert tool.
+
+```bash
+jupyter nbconvert --to markdown Test\ Notebook\ Blog\ Post.ipynb --NbConvertApp.output_files_dir=.
+```
+
+The command above will convert the notebook to Markdown and save it in the same directory as the notebook.
+Adding the usual Hugo front matter to the markdown file will allow it to be rendered as a blog post.
+Assuming you already have an index.md file with front matter, something like:
+
+```bash
+cat 'Test Notebook Blog Post.md' | tee -a index.md
+```
+
+...will do the trick!
 
 # Test Notebook Blog Post
 
@@ -66,11 +84,3 @@ plt.imshow(X)
     <matplotlib.image.AxesImage at 0x1248bd4b0>
 
 ![png](./Test%20Notebook%20Blog%20Post_5_1.png)
-
-```python
-
-```
-
-```python
-
-```

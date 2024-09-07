@@ -4,7 +4,7 @@
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 title: Eric Boittier # Website name
-baseURL: 'https://ericboittier@githubpages.io/' # Website URL
+baseURL: "https://ericboittier@githubpages.io/" # Website URL
 
 ############################
 ## LANGUAGE
@@ -28,6 +28,20 @@ module:
 ## ADVANCED
 ############################
 
+mainSections:
+  [
+    "post",
+    "talk",
+    "publication",
+    "project",
+    "course",
+    "event",
+    "tag",
+    "category",
+    "publication_type",
+    "author",
+  ]
+
 enableGitInfo: false
 summaryLength: 30
 paginate: 10
@@ -36,10 +50,10 @@ enableRobotsTXT: true
 footnotereturnlinkcontents: <sup>^</sup>
 ignoreFiles: [\.ipynb$, .ipynb_checkpoints$, \.Rmd$, \.Rmarkdown$, _cache$]
 permalinks:
-  event: '/talk/:slug/'
-  tags: '/tag/:slug/'
-  categories: '/category/:slug/'
-  publication_types: '/publication-type/:slug/'
+  event: "/talk/:slug/"
+  tags: "/tag/:slug/"
+  categories: "/category/:slug/"
+  publication_types: "/publication-type/:slug/"
 disableAliases: true
 outputs:
   home: [HTML, RSS, JSON, WebAppManifest, headers, redirects]

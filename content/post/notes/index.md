@@ -9,10 +9,10 @@ summary: If your cost function is too expensive to evaluate, you should check th
 projects: []
 
 # Date published
-date: "2022-08-17T00:00:00Z"
+date: "2022-08-01T00:00:00Z"
 
 # Date updated
-date: "2022-08-17T00:00:00Z"
+date: "2022-08-01T00:00:00Z"
 
 # Is this an unpublished draft?
 draft: false
