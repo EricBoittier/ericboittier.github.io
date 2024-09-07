@@ -1,5 +1,5 @@
 # get command line arguments
-
+#
 if [ $# -eq 0 ]; then
     echo "No arguments supplied"
     message="Update"
