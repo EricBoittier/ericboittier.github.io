@@ -15,5 +15,3 @@ header:
   caption: ""
   image: ""
 ---
-
-# Hello World
