@@ -18,8 +18,9 @@ bio: Interested in all things science, machine learning and strategy.
 
 # Interests to show in About widget
 interests:
-  - Physical Chemistry
   - Deep Learning
+  - Drug Discovery
+  - Physical Chemistry
   - Methods Development for Molecular Dynamics
 
 # Education to show in About widget
@@ -28,9 +29,9 @@ education:
     - course: Ph.D. -  Machine Learning for Physical Chemistry
       institution: The University of Basel, Switzerland
       year: (2025, expected)
-    #  - course: Honours - Computational Chemistry
-    #    institution: The University of Queensland, Australia
-    #    year: (2019)
+    - course: Research Stay
+      institution: Cancer and Ageing Research Program, QUT/TRI, Australia
+      year: (2020)
     - course: B. Adv. Sci. (Hons. Class I) -  Chemistry
       institution: The University of Queensland, Australia
       year: (2018)
