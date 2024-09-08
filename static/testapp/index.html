@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>arXiv Tinder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <center>
+    <h1>&#128520; arXiv Tinder &#128519;</h1>
+    <h2>Swipe right if you like the paper, swipe left if you don't!</h2>
+    <h3>Click on the card to view the paper</h3>
+
+    Keywords:
+    <input type="text" name="search" id="search" placeholder="machine learning" />
+    Must be older than:
+    <input type="date" name="year" id="published" value="2001-01-01" />
+    <button id="update">Update</button>
+  </center>
+  <div id="board"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+  <h1>&#128525; Matches</h1>
+  <script src="main.js"></script>
+  <script>
+    let board = document.querySelector("#board");
+    let carousel = new Carousel(board);
+
+    // Add event listener to the update button
+    document.addEventListener("DOMContentLoaded", () => {
+      const updateButton = document.getElementById("update");
+      updateButton.addEventListener("click", () => {
+        // remove the current card
+        let title = document.getElementById("title");
+        title.textContent =
+          "Finding demure preprints based on your preferences...";
+        let age = document.getElementById("age");
+        age.textContent = "";
+        let authors = document.getElementById("authors");
+        authors.textContent = "";
+        //carousel.push();
+        carousel.init();
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -1,7 +1,0 @@
-{{ range .Site.Params.custom_js -}}
-<script type="text/javascript" src="{{ . | absURL }}"></script>
-<script>
-  console.log("Loaded custom JS: {{ . }}");
-</script>
-
-{{- end }}

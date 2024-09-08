@@ -28,21 +28,7 @@ module:
 ## ADVANCED
 ############################
 
-mainSections:
-  [
-    "post",
-    "talk",
-    "publication",
-    "project",
-    "course",
-    "event",
-    "tag",
-    "category",
-    "publication_type",
-    "author",
-  ]
-
-custom_js: ["js/extra.js", "js/ngl.js"]
+mainSections: ["post", "publication"]
 
 enableGitInfo: false
 summaryLength: 30
