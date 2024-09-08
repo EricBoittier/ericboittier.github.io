@@ -11,7 +11,7 @@
       height: 100%;
       margin: 0;
       padding: 1%;
-/*      background-color: rgb(245, 247, 250);*/
+      /*      background-color: rgb(245, 247, 250);*/
     }
 
     .h1 {
@@ -23,7 +23,7 @@
       height: 50%;
       position: relative;
       overflow: hidden;
-/*      background-color: rgb(245, 247, 250);*/
+      /*      background-color: rgb(245, 247, 250);*/
     }
 
     .card {
@@ -36,7 +36,7 @@
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
       background-color: white;
       transform: translateX(-50%) translateY(-50%) scale(0.95);
-      background-color: rgba(128,128,128, 1);
+      background-color: rgba(128, 128, 128, 1);
       background-blend-mode: soft-light;
       animation-delay: 2s;
     }
@@ -55,7 +55,12 @@
     <p>Click on the card to view the paper.</p>
 
     Keywords:
-    <input type="text" name="search" id="search" placeholder="machine learning" />
+    <input
+      type="text"
+      name="search"
+      id="searchText"
+      placeholder="machine learning"
+    />
     Must be older than:
     <input type="date" name="year" id="published" value="2001-01-01" />
     <button id="update">Update</button>
@@ -63,7 +68,7 @@
   <div id="board"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
   <h1>&#128525; Matches</h1>
-  <table id="articleTable"> </table>
+  <table id="articleTable"></table>
 
   <script>
     class ArxivRandomArticle {
@@ -76,20 +81,20 @@
       // Get random article, retry if no article is found
       async getRandomArticles() {
         let article = null;
-        let searchText = document.getElementById("search").value;
+        let searchText = document.getElementById("searchText").value;
+        console.log("...", searchText);
         let published = document.getElementById("published").value;
         let date = new Date(published);
-        if (!searchText) {
+        if (searchText === "") {
           searchText = "machine+learning";
         }
-        searchText = "all%22" + searchText.replace(/ /g, "+") + "%22";
-
+        searchText = "all:%22" + searchText.replace(/ /g, "+") + "%22";
         let articleIDs = [];
         let articles = [];
-
+        console.log(searchText);
         // Generate random start index to simulate random article fetching
-        const randomIndex = Math.floor(Math.random() * 1000);
-        const url = `${this.apiUrl}search_query=${searchText}&start=${randomIndex}&max_results=256`;
+        const randomIndex = Math.floor(Math.random() * 100);
+        const url = `${this.apiUrl}search_query=${searchText}&start=${randomIndex}&max_results=64&sortBy=relevance`;
         try {
           const response = await fetch(url);
           const data = await response.text();
@@ -97,7 +102,6 @@
           // Parse XML response
           const parser = new DOMParser();
           const xml = parser.parseFromString(data, "application/xml");
-
           // remove papers that are not published after the date
           const entries = xml.getElementsByTagName("entry");
           let articleID = 0;
@@ -108,11 +112,10 @@
             const publishedDate = new Date(published);
             if (publishedDate >= date) {
               articleID = i;
-              console.log("found!", articleID, publishedDate);
+              //console.log("found!", articleID, publishedDate);
               articleIDs.push(articleID);
             }
           }
-
           // If an entry is found, extract article data
           if (articleIDs.length > 0) {
             for (let i = 0; i < articleIDs.length; i++) {
@@ -134,6 +137,7 @@
                   .getElementsByTagName("link")[0]
                   .getAttribute("href"),
               };
+              console.log("Article found:", article.title);
               articles.push(article);
             }
           }
@@ -150,9 +154,11 @@
         return new Promise((resolve) => setTimeout(resolve, ms));
       }
     }
+    /******************************
 
     /* LikeCarousel (c) 2019 Simone P.M. github.com/simonepm - Licensed MIT */
     class Carousel {
+
       constructor(element) {
         this.board = element;
         this.articles = [];
@@ -160,8 +166,6 @@
         this.init();
         this.push();
         this.handle();
-        //    this.removeTopCard();
-
         this.addKeyboardListeners(); // Add this line to set up keyboard listeners
         this.currentArticle = 0;
       }
@@ -172,13 +176,9 @@
         while (this.articles.length === 0) {
           this.articles = await arxiv.getRandomArticles();
         }
-        //this.articles = await arxiv.getRandomArticles();
-        // set the title to finished
-        //this.removeTopCard();
         this.handle();
         let title = document.getElementById("title");
-        title.textContent = "Start Swiping!"; // this.articles[0].title;
-        //this.removeTopCard();
+        title.textContent = "Start Swiping!"; 
         return;
       }
 
@@ -206,7 +206,9 @@
             direction === "left"
               ? Hammer.DIRECTION_LEFT
               : Hammer.DIRECTION_RIGHT,
+          center: {x: 0, y: 0, z:0 },
         };
+        console.log(swipeEvent);
         this.onPan(swipeEvent);
       }
 
@@ -254,6 +256,9 @@
           this.hammer.on("pan", (e) => {
             this.onPan(e);
           });
+        }
+        if (this.articles.length === this.currentArticle) {
+          this.init();
         }
       }
 
@@ -415,6 +420,8 @@
         }
       }
 
+      
+
       push() {
         let card = document.createElement("div");
         card.classList.add("card");
@@ -449,7 +456,9 @@
       deincrement() {
         this.currentArticle--;
       }
+
     }
+
     let board = document.querySelector("#board");
     let carousel = new Carousel(board);
 
