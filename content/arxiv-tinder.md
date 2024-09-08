@@ -7,8 +7,8 @@ reading_time: false # Show estimated reading time?
 share: false # Show social sharing links?
 profile: false # Show author profile?
 comments: false # Show comments?
-headless: true # Homepage is headless?
-footer: false # Display footer?
+showHeader: false # Homepage is headless?
+showFooter: false
 
 layout: arxivtinder
 

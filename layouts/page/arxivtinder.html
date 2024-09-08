@@ -44,6 +44,8 @@
     img {
       opacity: 0.8;
     }
+
+
   </style>
 </head>
 
@@ -363,11 +365,6 @@
 
             if (storedArticle && storedArticle.title && storedArticle.link) {
               let table = document.getElementById("articleTable");
-              // if (!table) {
-              //   table = document.createElement("table");
-              //   table.id = "articleTable";
-              //   document.body.appendChild(table);
-              // }
               const row = table.insertRow();
               const cell = row.insertCell();
               const articleLink = document.createElement("a");
@@ -482,3 +479,5 @@
 </body>
 
 {{ end }}
+
+
