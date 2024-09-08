@@ -24,7 +24,7 @@ main:
     url: "/all-posts/"
     weight: 70
   - name: arxivtinder
-    url: "/arxivtinder/"
+    url: "/arxiv-tinder/"
     weight: 80
 
     # Link to a PDF of your resume/CV from the menu.
