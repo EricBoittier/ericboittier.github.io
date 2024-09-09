@@ -6,7 +6,7 @@ if [ $# -eq 0 ]; then
   else
     message=$1
 fi
-hugo --minify
+hugo --minify --baseURL "https://www.ericboittier.github.io/"
 git add -A
 git commit -m "$message"
 git push

@@ -347,3 +347,117 @@ class MultiModalTransformerBlock(nn.Module):
 
         return latent_image_embeddings, token_level_text_embeddings
 ```
+
+# The unified transformer block
+
+```python
+class UnifiedTransformerBlock(nn.Module):
+    def __init__(self, config: MMDiTConfig):
+        super().__init__()
+        self.transformer_block = TransformerBlock(
+            config,
+            num_modulation_params=3 if config.parallel_mlp_for_unified_blocks else 6,
+            parallel_mlp=config.parallel_mlp_for_unified_blocks,
+        )
+
+        sdpa_impl = mx.fast.scaled_dot_product_attention
+        self.sdpa = partial(sdpa_impl)
+
+        self.config = config
+        self.per_head_dim = config.hidden_size // config.num_heads
+
+    def __call__(
+        self,
+        latent_unified_embeddings: mx.array,  # latent image embeddings
+        timestep: mx.array,  # pooled text embeddings + timestep embeddings
+        positional_encodings: mx.array = None,  # positional encodings for rope
+    ):
+        # Prepare multi-modal SDPA inputs
+        intermediates = self.transformer_block.pre_sdpa(
+            latent_unified_embeddings,
+            timestep=timestep,
+        )
+
+        batch = latent_unified_embeddings.shape[0]
+
+        def rearrange_for_sdpa(t):
+            # Target data layout: (batch, head, seq_len, channel)
+            return t.reshape(
+                batch, -1, self.config.num_heads, self.per_head_dim
+            ).transpose(0, 2, 1, 3)
+
+        multimodal_sdpa_inputs = {
+            "q": intermediates["q"],
+            "k": intermediates["k"],
+            "v": intermediates["v"],
+            "scale": 1.0 / np.sqrt(self.per_head_dim),
+        }
+
+        if self.config.pos_embed_type == PositionalEncoding.PreSDPARope:
+            assert positional_encodings is not None
+            multimodal_sdpa_inputs["q"] = RoPE.apply(
+                multimodal_sdpa_inputs["q"], positional_encodings
+            )
+            multimodal_sdpa_inputs["k"] = RoPE.apply(
+                multimodal_sdpa_inputs["k"], positional_encodings
+            )
+
+        if self.config.low_memory_mode:
+            multimodal_sdpa_inputs[
+                "memory_efficient_threshold"
+            ] = SDPA_FLASH_ATTN_THRESHOLD
+
+        # Compute multi-modal SDPA
+        sdpa_outputs = (
+            self.sdpa(**multimodal_sdpa_inputs)
+            .transpose(0, 2, 1, 3)
+            .reshape(batch, -1, 1, self.config.hidden_size)
+        )
+
+        # o_proj and mlp.fc2 uses the same bias, remove mlp.fc2 bias
+        self.transformer_block.mlp.fc2.bias = self.transformer_block.mlp.fc2.bias * 0.0
+
+        # Post-SDPA layers
+        latent_unified_embeddings = self.transformer_block.post_sdpa(
+            residual=latent_unified_embeddings,
+            sdpa_output=sdpa_outputs,
+            **intermediates,
+        )
+
+        return latent_unified_embeddings
+```
+
+# The final layer
+
+```python
+class FinalLayer(nn.Module):
+    def __init__(self, config: MMDiTConfig):
+        super().__init__()
+        self.norm_final = LayerNorm(config.hidden_size, eps=config.layer_norm_eps)
+        self.linear = nn.Linear(
+            config.hidden_size,
+            (config.patch_size**2) * config.vae_latent_dim,
+        )
+        self.adaLN_modulation = nn.Sequential(
+            nn.SiLU(),
+            nn.Linear(config.hidden_size, 2 * config.hidden_size),
+        )
+
+    def __call__(
+        self,
+        latent_image_embeddings: mx.array,
+        timestep: mx.array,
+    ) -> mx.array:
+        if timestep.size > 1:
+            timestep = timestep[0]
+        modulation_params = self._modulation_params[timestep.item()]
+
+        shift, residual_scale = mx.split(modulation_params, 2, axis=-1)
+        latent_image_embeddings = affine_transform(
+            latent_image_embeddings,
+            shift=shift,
+            residual_scale=residual_scale,
+            norm_module=self.norm_final,
+        )
+        return self.linear(latent_image_embeddings)
+```
