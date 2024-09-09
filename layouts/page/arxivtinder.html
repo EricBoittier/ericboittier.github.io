@@ -93,6 +93,7 @@
         this.apiUrl = "https://export.arxiv.org/api/query?";
         this.published = "2019-01-01";
         this.searchQuery = "all%22machine+learning%22";
+        this.maxResults = 64;
       }
 
       // Get random article, retry if no article is found
@@ -111,7 +112,7 @@
         console.log(searchText);
         // Generate random start index to simulate random article fetching
         const randomIndex = Math.floor(Math.random() * 100);
-        const url = `${this.apiUrl}search_query=${searchText}&start=${randomIndex}&max_results=64&sortBy=relevance`;
+        const url = `${this.apiUrl}search_query=${searchText}&start=${randomIndex}&max_results=${this.maxResults}&sortBy=relevance`;
         try {
           const response = await fetch(url);
           const data = await response.text();
@@ -273,9 +274,6 @@
             this.onPan(e);
           });
         }
-        if (this.articles.length === this.currentArticle) {
-          this.init();
-        }
       }
 
       onTap(e) {
@@ -416,6 +414,12 @@
               deg +
               "deg)";
 
+            console.log("...", this.currentArticle, this.articles.length);
+            if (this.currentArticle === this.articles.length) {
+              this.currentArticle = 0;
+              this.init();
+              this.deincrement();
+            }
             // wait transition end
             setTimeout(() => {
               // remove swiped card
@@ -452,7 +456,6 @@
         title.textContent = storedArticle
           ? storedArticle.title
           : "Looking for hot papers in your area..."; // article title or loading message
-        // wait for this.articles to be fetched
         let age = document.createElement("p");
         age.textContent = storedArticle ? storedArticle.published : "";
         age.setAttribute("id", "age");
