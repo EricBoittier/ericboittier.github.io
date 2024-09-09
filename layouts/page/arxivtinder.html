@@ -28,12 +28,14 @@
     }
 
     table.articleTable {
-      background-color: rgba(128, 128, 128, 1);
+      background-color: rgba(255, 80, 107, 1);
       opacity: 1;
     }
 
     .matches {
-      background-color: rgba(128, 128, 128, 1);
+      opacity: 1.0;
+
+      background-color: rgba(255, 80, 107, 1);
       position: relative;
       top: 50%;
       overflow: visible;
@@ -378,8 +380,11 @@
             if (storedArticle && storedArticle.title && storedArticle.link) {
               let table = document.getElementById("articleTable");
               const row = table.insertRow();
-              // give the row an opaque background
               const cell = row.insertCell();
+              // make cell pink
+              row.style.backgroundColor = "rgba(255, 80, 107, 1)";
+
+              cell.style.backgroundColor = "rgba(255, 80, 107, 1)";
               const articleLink = document.createElement("a");
               articleLink.href = storedArticle.link;
               articleLink.textContent = storedArticle.title;
@@ -387,6 +392,7 @@
               cell.appendChild(articleLink);
               // add published Date
               const publishedCell = row.insertCell();
+              publishedCell.style.backgroundColor = "rgba(255, 80, 107, 1)";
               publishedCell.textContent = storedArticle.published;
             }
           } else if (propX < -0.25 && e.direction == Hammer.DIRECTION_LEFT) {
