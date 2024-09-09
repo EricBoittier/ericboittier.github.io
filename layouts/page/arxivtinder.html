@@ -20,18 +20,33 @@
 
     #board {
       width: 100%;
-      height: 50%;
-      position: relative;
-      overflow: hidden;
+      height: 100%;
+      padding: 1%;
+      position: absolute;
+      overflow: visible;
       /*      background-color: rgb(245, 247, 250);*/
     }
 
-    .card {
-      width: 320px;
-      height: 320px;
-      position: absolute;
+    table.articleTable {
+      background-color: rgba(128, 128, 128, 1);
+      opacity: 1;
+    }
+
+    .matches {
+      background-color: rgba(128, 128, 128, 1);
+      position: relative;
       top: 50%;
+      overflow: visible;
+      bottom: 0;
+    }
+
+    .card {
+      width: 30%;
+      height: 30%;
+      position: absolute;
+      overflow: visible top: 50%;
       left: 50%;
+      top: 480px;
       border-radius: 1%;
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
       background-color: white;
@@ -44,33 +59,31 @@
     img {
       opacity: 0.8;
     }
-
-
   </style>
 </head>
 
 <body>
   <center>
-    <h1>&#128525;</h1>
-    <h1>&#128520; arXiv Tinder &#128519;</h1>
-    <p>Swipe right if you like the paper, swipe left if you don't!</p>
-    <p>Click on the card to view the paper.</p>
+    <div id="board">
+      <!-- <h1>&#128525;</h1> -->
+      <h1>&#128520; arXiv Tinder &#128519;</h1>
+      <p>Swipe right if you like the paper, swipe left if you don't!</p>
+      <p>Click on the card to view the paper.</p>
 
-    Keywords:
-    <input
-      type="text"
-      name="search"
-      id="searchText"
-      placeholder="machine learning"
-    />
-    Must be older than:
-    <input type="date" name="year" id="published" value="2001-01-01" />
-    <button id="update">Update</button>
+      Keywords:
+      <input type="text" name="search" id="searchText" placeholder="machine learning" />
+      Must be older than:
+      <input type="date" name="year" id="published" value="2001-01-01" />
+      <button id="update">Update</button>
+
+      <div class="matches">
+        <h1>&#128525; Matches</h1>
+        <table id="articleTable" class="articleTable"></table>
+      </div>
+    </div>
   </center>
-  <div id="board"></div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
-  <h1>&#128525; Matches</h1>
-  <table id="articleTable"></table>
 
   <script>
     class ArxivRandomArticle {
@@ -160,7 +173,6 @@
 
     /* LikeCarousel (c) 2019 Simone P.M. github.com/simonepm - Licensed MIT */
     class Carousel {
-
       constructor(element) {
         this.board = element;
         this.articles = [];
@@ -180,7 +192,7 @@
         }
         this.handle();
         let title = document.getElementById("title");
-        title.textContent = "Start Swiping!"; 
+        title.textContent = "Start Swiping!";
         return;
       }
 
@@ -208,7 +220,7 @@
             direction === "left"
               ? Hammer.DIRECTION_LEFT
               : Hammer.DIRECTION_RIGHT,
-          center: {x: 0, y: 0, z:0 },
+          center: {x: 0, y: 0, z: 0},
         };
         console.log(swipeEvent);
         this.onPan(swipeEvent);
@@ -366,6 +378,7 @@
             if (storedArticle && storedArticle.title && storedArticle.link) {
               let table = document.getElementById("articleTable");
               const row = table.insertRow();
+              // give the row an opaque background
               const cell = row.insertCell();
               const articleLink = document.createElement("a");
               articleLink.href = storedArticle.link;
@@ -417,10 +430,10 @@
         }
       }
 
-      
-
       push() {
         let card = document.createElement("div");
+        // append the card to the board
+
         card.classList.add("card");
         card.style.backgroundImage =
           "url('https://picsum.photos/320/320/?random=" +
@@ -453,7 +466,6 @@
       deincrement() {
         this.currentArticle--;
       }
-
     }
 
     let board = document.querySelector("#board");
@@ -479,5 +491,3 @@
 </body>
 
 {{ end }}
-
-

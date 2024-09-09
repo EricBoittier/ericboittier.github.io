@@ -1,6 +1,6 @@
 ---
-title: All Blog Posts
-summary: A list of all the blog posts.
+title:
+summary:
 date: "2018-06-28T00:00:00Z"
 
 reading_time: false # Show estimated reading time?
@@ -17,5 +17,3 @@ header:
   caption: ""
   image: ""
 ---
-
-TestTestTes
