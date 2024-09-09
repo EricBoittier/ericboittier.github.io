@@ -74,7 +74,12 @@
       <p>Click on the card to view the paper.</p>
 
       Keywords:
-      <input type="text" name="search" id="searchText" placeholder="machine learning" />
+      <input
+        type="text"
+        name="search"
+        id="searchText"
+        placeholder="machine learning"
+      />
       Must be older than:
       <input type="date" name="year" id="published" value="2001-01-01" />
       <button id="update">Update</button>
@@ -124,7 +129,7 @@
       var downloadLink;
 
       // CSV file
-      csvFile = new Blob([csv], {type: "text/csv"});
+      csvFile = new Blob([csv], { type: "text/csv" });
       // Download link
       downloadLink = document.createElement("a");
       // File name
@@ -220,7 +225,7 @@
       }
     }
     /******************************
-
+    /* based on:
     /* LikeCarousel (c) 2019 Simone P.M. github.com/simonepm - Licensed MIT */
     class Carousel {
       constructor(element) {
@@ -270,7 +275,7 @@
             direction === "left"
               ? Hammer.DIRECTION_LEFT
               : Hammer.DIRECTION_RIGHT,
-          center: {x: 0, y: 0, z: 0},
+          center: { x: 0, y: 0, z: 0 },
         };
         this.onPan(swipeEvent);
       }
@@ -509,11 +514,6 @@
           ")";
         card.style.background = gradient;
         card.style.backgroundOpacity = 0.1;
-        // card.style.backgroundImage =
-        //   "url('https://picsum.photos/320/320/?random=" +
-        //   Math.round(Math.random() * 1000000) +
-        //   "')";
-        // add the title to the card
         let title = document.createElement("p");
         title.setAttribute("id", "title");
         let storedArticle = this.articles[this.currentArticle]; // get the current article
@@ -529,6 +529,12 @@
           ? storedArticle.authors.join(", ")
           : "";
         authors.setAttribute("id", "authors");
+        // make a div which centers the text
+        let divObj = document.createElement("div");
+        card.style.textAlign = "center";
+        card.style.display = "flex";
+        card.style.justifyContent = "center";
+        card.style.alignItems = "center";
         card.appendChild(title);
         card.appendChild(age);
         card.appendChild(authors);
