@@ -30,6 +30,7 @@
     table.articleTable {
       background-color: rgba(255, 80, 107, 1);
       opacity: 1;
+      width: 80%;
     }
 
     .matches {
@@ -80,7 +81,15 @@
 
       <div class="matches">
         <h1>&#128525; Matches</h1>
-        <table id="articleTable" class="articleTable"></table>
+        <button type="button" onclick="tableToCSV()">Download as CSV</button>
+        <table id="articleTable" class="articleTable">
+          <tr>
+            <th>Title</th>
+            <th>Published</th>
+            <th>Authors</th>
+            <th>DOI</th>
+          </tr>
+        </table>
       </div>
     </div>
   </center>
@@ -88,6 +97,50 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 
   <script>
+    function tableToCSV() {
+      var table = document.getElementById("articleTable");
+      var rows = table.rows;
+      var csv = [];
+      for (var i = 0; i < rows.length; i++) {
+        var row = [],
+          cols = rows[i].cells;
+        for (var j = 0; j < cols.length; j++) {
+          var txt = cols[j].textContent;
+          // remove line breaks
+          txt = txt.replace(/(\r\n|\n|\r)/gm, "");
+          row.push(cols[j].textContent);
+        }
+        csv.push(row.join(","));
+      }
+      // current date-time
+      var date = new Date();
+      var dateStr = date.toISOString();
+      var filename = "arxivTinder-" + dateStr + ".csv";
+      downloadCSV(csv.join("\n"), filename);
+    }
+
+    function downloadCSV(csv, filename) {
+      var csvFile;
+      var downloadLink;
+
+      // CSV file
+      csvFile = new Blob([csv], {type: "text/csv"});
+      // Download link
+      downloadLink = document.createElement("a");
+      // File name
+      downloadLink.download = filename;
+      // Create a link to the file
+      downloadLink.href = window.URL.createObjectURL(csvFile);
+      // Hide download link
+      downloadLink.style.display = "none";
+
+      // Add the link to DOM
+      document.body.appendChild(downloadLink);
+
+      // Click download link
+      downloadLink.click();
+    }
+
     class ArxivRandomArticle {
       constructor() {
         this.apiUrl = "https://export.arxiv.org/api/query?";
@@ -381,17 +434,21 @@
               const cell = row.insertCell();
               // make cell pink
               row.style.backgroundColor = "rgba(255, 80, 107, 1)";
-
               cell.style.backgroundColor = "rgba(255, 80, 107, 1)";
               const articleLink = document.createElement("a");
               articleLink.href = storedArticle.link;
               articleLink.textContent = storedArticle.title;
               articleLink.target = "_blank";
               cell.appendChild(articleLink);
-              // add published Date
               const publishedCell = row.insertCell();
               publishedCell.style.backgroundColor = "rgba(255, 80, 107, 1)";
               publishedCell.textContent = storedArticle.published;
+              const authorsCell = row.insertCell();
+              authorsCell.style.backgroundColor = "rgba(255, 80, 107, 1)";
+              authorsCell.textContent = storedArticle.authors.join(";");
+              const doiCell = row.insertCell();
+              doiCell.style.backgroundColor = "rgba(255, 80, 107, 1)";
+              doiCell.textContent = storedArticle.link;
             }
           } else if (propX < -0.25 && e.direction == Hammer.DIRECTION_LEFT) {
             successful = true;
@@ -445,10 +502,25 @@
         // append the card to the board
 
         card.classList.add("card");
-        card.style.backgroundImage =
-          "url('https://picsum.photos/320/320/?random=" +
-          Math.round(Math.random() * 1000000) +
-          "')";
+        // add random color gradient to the cards
+        var deg = Math.floor(Math.random() * 360);
+
+        var gradient =
+          "linear-gradient(" +
+          deg +
+          "deg, " +
+          "#1A" +
+          createHex() +
+          ", " +
+          "#1A" +
+          createHex() +
+          ")";
+        card.style.background = gradient;
+        card.style.backgroundOpacity = 0.1;
+        // card.style.backgroundImage =
+        //   "url('https://picsum.photos/320/320/?random=" +
+        //   Math.round(Math.random() * 1000000) +
+        //   "')";
         // add the title to the card
         let title = document.createElement("p");
         title.setAttribute("id", "title");
@@ -475,6 +547,18 @@
       deincrement() {
         this.currentArticle--;
       }
+    }
+
+    function createHex() {
+      var hexCode1 = "";
+      var hexValues1 = "0123456789abcdef";
+
+      for (var i = 0; i < 6; i++) {
+        hexCode1 += hexValues1.charAt(
+          Math.floor(Math.random() * hexValues1.length),
+        );
+      }
+      return hexCode1;
     }
 
     let board = document.querySelector("#board");
