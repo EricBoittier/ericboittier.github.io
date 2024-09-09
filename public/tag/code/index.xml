@@ -1,4 +1,281 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>code | Eric Boittier</title><link>https://ericboittier@githubpages.io/tag/code/</link><atom:link href="https://ericboittier@githubpages.io/tag/code/index.xml" rel="self" type="application/rss+xml"/><description>code</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 17 Aug 2023 00:00:00 +0000</lastBuildDate><image><url>https://ericboittier@githubpages.io/media/icon_hu9ac327d6012d36714959b8b60a0f0d52_7608_512x512_fill_lanczos_center_3.png</url><title>code</title><link>https://ericboittier@githubpages.io/tag/code/</link></image><item><title>From Juptyer to Blog</title><link>https://ericboittier@githubpages.io/post/test-notebook/</link><pubDate>Thu, 17 Aug 2023 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/post/test-notebook/</guid><description>&lt;p>The following post was made
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>code | Eric Boittier</title><link>https://ericboittier@githubpages.io/tag/code/</link><atom:link href="https://ericboittier@githubpages.io/tag/code/index.xml" rel="self" type="application/rss+xml"/><description>code</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 17 Aug 2023 00:00:00 +0000</lastBuildDate><image><url>https://ericboittier@githubpages.io/media/icon_hu9ac327d6012d36714959b8b60a0f0d52_7608_512x512_fill_lanczos_center_3.png</url><title>code</title><link>https://ericboittier@githubpages.io/tag/code/</link></image><item><title>Flux.1</title><link>https://ericboittier@githubpages.io/post/fluxschnell/</link><pubDate>Thu, 17 Aug 2023 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/post/fluxschnell/</guid><description>&lt;p>Flux is a generative diffusion model from Blackforest Labs. Diffusion is a process by which particles spread out from a high concentration to a low concentration. The model uses a series of transformations to generate images, starting from a simple noise vector and gradually generating an image over some number of steps.
+Here is some output of the model:&lt;/p>
+&lt;p>&lt;a href="https://github.com/argmaxinc/DiffusionKit/tree/main" target="_blank" rel="noopener">Diffusion-kit&lt;/a> provides a simple interface to run the model on a macbook,&lt;/p>
+&lt;pre>&lt;code class="language-bash">diffusionkit-cli --prompt &amp;quot;prompt&amp;quot; \
+--steps 3 --output-path &amp;quot;featured.png&amp;quot;
+&lt;/code>&lt;/pre>
+&lt;p>And in python:&lt;/p>
+&lt;pre>&lt;code class="language-python">from diffusionkit.mlx import FluxPipeline
+pipeline = FluxPipeline(
+shift=1.0,
+model_version=&amp;quot;argmaxinc/mlx-FLUX.1-schnell&amp;quot;,
+low_memory_mode=True,
+a16=True,
+w16=True,
+)
+HEIGHT = 512
+WIDTH = 512
+NUM_STEPS = 4 # 4 for FLUX.1-schnell, 50 for SD3
+CFG_WEIGHT = 0. # for FLUX.1-schnell, 5. for SD3
+image, _ = pipeline.generate_image(
+&amp;quot;a photo of a cat&amp;quot;,
+cfg_weight=CFG_WEIGHT,
+num_steps=NUM_STEPS,
+latent_size=(HEIGHT // 8, WIDTH // 8),
+)
+image.save(&amp;quot;image.png&amp;quot;)
+&lt;/code>&lt;/pre>
+&lt;p>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img alt="Flux" srcset="
+/post/fluxschnell/image_hu7f8f19a1c5b64af49ec81e894680faf0_321997_da0e88cf982901372142a87a3049e92c.webp 400w,
+/post/fluxschnell/image_hu7f8f19a1c5b64af49ec81e894680faf0_321997_e24e7e401a8090e21304d658e97ac3de.webp 760w,
+/post/fluxschnell/image_hu7f8f19a1c5b64af49ec81e894680faf0_321997_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+src="https://ericboittier@githubpages.io/post/fluxschnell/image_hu7f8f19a1c5b64af49ec81e894680faf0_321997_da0e88cf982901372142a87a3049e92c.webp"
+width="512"
+height="512"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
+&lt;p>Quite impressive. I thought diffusion would require more steps.
+In thermodynamics, diffusion is a slow process, the long-time limit of
+how much a system can change.
+Certainly, something exciting is going on under the hood.
+The model is based on an architecture published on &amp;ldquo;Scaling Rectified Flow Transformers for High-Resolution Image Synthesis&amp;rdquo; by Stability AI (&lt;a href="https://arxiv.org/pdf/2403.03206]" target="_blank" rel="noopener">paper&lt;/a>.&lt;/p>
+&lt;h1 id="the-architecture">The architecture&lt;/h1>
+&lt;p>
+&lt;figure >
+&lt;div class="d-flex justify-content-center">
+&lt;div class="w-100" >&lt;img alt="architecture" srcset="
+/post/fluxschnell/figure_hud725ec3a009e98800b3eb1d4b4fa0d69_422974_790cbba67b2822c515f7f39430f8518f.webp 400w,
+/post/fluxschnell/figure_hud725ec3a009e98800b3eb1d4b4fa0d69_422974_860ec3b4af5dfea78aa0a84bf7df48f2.webp 760w,
+/post/fluxschnell/figure_hud725ec3a009e98800b3eb1d4b4fa0d69_422974_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
+src="https://ericboittier@githubpages.io/post/fluxschnell/figure_hud725ec3a009e98800b3eb1d4b4fa0d69_422974_790cbba67b2822c515f7f39430f8518f.webp"
+width="760"
+height="586"
+loading="lazy" data-zoomable />&lt;/div>
+&lt;/div>&lt;/figure>
+&lt;/p>
+&lt;p>Let&amp;rsquo;s see the code:&lt;/p>
+&lt;pre>&lt;code class="language-python">class MMDiT(nn.Module):
+def __init__(self, config: MMDiTConfig):
+super().__init__()
+self.config = config
+# Input adapters and embeddings
+self.x_embedder = LatentImageAdapter(config)
+if config.pos_embed_type == PositionalEncoding.LearnedInputEmbedding:
+self.x_pos_embedder = LatentImagePositionalEmbedding(config)
+self.pre_sdpa_rope = nn.Identity()
+elif config.pos_embed_type == PositionalEncoding.PreSDPARope:
+self.pre_sdpa_rope = RoPE(
+theta=10000,
+axes_dim=config.rope_axes_dim,
+)
+else:
+raise ValueError(
+f&amp;quot;Unsupported positional encoding type: {config.pos_embed_type}&amp;quot;
+)
+self.y_embedder = PooledTextEmbeddingAdapter(config)
+self.t_embedder = TimestepAdapter(config)
+self.context_embedder = nn.Linear(
+config.token_level_text_embed_dim,
+config.hidden_size,
+)
+self.multimodal_transformer_blocks = [
+MultiModalTransformerBlock(
+config,
+skip_text_post_sdpa=(i == config.depth_multimodal - 1)
+and (config.depth_unified &amp;lt; 1),
+)
+for i in range(config.depth_multimodal)
+]
+if config.depth_unified &amp;gt; 0:
+self.unified_transformer_blocks = [
+UnifiedTransformerBlock(config) for _ in range(config.depth_unified)
+]
+self.final_layer = FinalLayer(config)
+&lt;/code>&lt;/pre>
+&lt;h1 id="the-forward-pass">The forward pass:&lt;/h1>
+&lt;pre>&lt;code class="language-python"> def __call__(
+self,
+latent_image_embeddings: mx.array,
+token_level_text_embeddings: mx.array,
+timestep: mx.array,
+) -&amp;gt; mx.array:
+batch, latent_height, latent_width, _ = latent_image_embeddings.shape
+token_level_text_embeddings = self.context_embedder(token_level_text_embeddings)
+if hasattr(self, &amp;quot;x_pos_embedder&amp;quot;):
+latent_image_embeddings = self.x_embedder(
+latent_image_embeddings
+) + self.x_pos_embedder(latent_image_embeddings)
+else:
+latent_image_embeddings = self.x_embedder(latent_image_embeddings)
+latent_image_embeddings = latent_image_embeddings.reshape(
+batch, -1, 1, self.config.hidden_size
+)
+if self.config.pos_embed_type == PositionalEncoding.PreSDPARope:
+positional_encodings = self.pre_sdpa_rope(
+text_sequence_length=token_level_text_embeddings.shape[1],
+latent_image_resolution=(
+latent_height // self.config.patch_size,
+latent_width // self.config.patch_size,
+),
+)
+else:
+positional_encodings = None
+# MultiModalTransformer layers
+if self.config.depth_multimodal &amp;gt; 0:
+for bidx, block in enumerate(self.multimodal_transformer_blocks):
+latent_image_embeddings, token_level_text_embeddings = block(
+latent_image_embeddings,
+token_level_text_embeddings,
+timestep,
+positional_encodings=positional_encodings,
+)
+# UnifiedTransformerBlock layers
+if self.config.depth_unified &amp;gt; 0:
+latent_unified_embeddings = mx.concatenate(
+(token_level_text_embeddings, latent_image_embeddings), axis=1
+)
+for bidx, block in enumerate(self.unified_transformer_blocks):
+latent_unified_embeddings = block(
+latent_unified_embeddings,
+timestep,
+positional_encodings=positional_encodings,
+)
+latent_image_embeddings = latent_unified_embeddings[
+:, token_level_text_embeddings.shape[1] :, ...
+]
+# Final layer
+latent_image_embeddings = self.final_layer(
+latent_image_embeddings,
+timestep,
+)
+if self.config.patchify_via_reshape:
+latent_image_embeddings = self.x_embedder.unpack(
+latent_image_embeddings, (latent_height, latent_width)
+)
+else:
+latent_image_embeddings = unpatchify(
+latent_image_embeddings,
+patch_size=self.config.patch_size,
+target_height=latent_height,
+target_width=latent_width,
+vae_latent_dim=self.config.vae_latent_dim,
+)
+return latent_image_embeddings
+&lt;/code>&lt;/pre>
+&lt;h1 id="the-multi-modal-transformer-block">The multi-modal transformer block&lt;/h1>
+&lt;pre>&lt;code class="language-python">class MultiModalTransformerBlock(nn.Module):
+def __init__(self, config: MMDiTConfig, skip_text_post_sdpa: bool = False):
+super().__init__()
+self.image_transformer_block = TransformerBlock(config)
+self.text_transformer_block = TransformerBlock(
+config, skip_post_sdpa=skip_text_post_sdpa
+)
+sdpa_impl = mx.fast.scaled_dot_product_attention
+self.sdpa = partial(sdpa_impl)
+self.config = config
+self.per_head_dim = config.hidden_size // config.num_heads
+def __call__(
+self,
+latent_image_embeddings: mx.array, # latent image embeddings
+token_level_text_embeddings: mx.array, # token-level text embeddings
+timestep: mx.array, # pooled text embeddings + timestep embeddings
+positional_encodings: mx.array = None, # positional encodings for rope
+):
+# Prepare multi-modal SDPA inputs
+image_intermediates = self.image_transformer_block.pre_sdpa(
+latent_image_embeddings,
+timestep=timestep,
+)
+text_intermediates = self.text_transformer_block.pre_sdpa(
+token_level_text_embeddings,
+timestep=timestep,
+)
+batch = latent_image_embeddings.shape[0]
+def rearrange_for_sdpa(t):
+# Target data layout: (batch, head, seq_len, channel)
+return t.reshape(
+batch, -1, self.config.num_heads, self.per_head_dim
+).transpose(0, 2, 1, 3)
+if self.config.depth_unified &amp;gt; 0:
+multimodal_sdpa_inputs = {
+&amp;quot;q&amp;quot;: mx.concatenate(
+[text_intermediates[&amp;quot;q&amp;quot;], image_intermediates[&amp;quot;q&amp;quot;]], axis=2
+),
+&amp;quot;k&amp;quot;: mx.concatenate(
+[text_intermediates[&amp;quot;k&amp;quot;], image_intermediates[&amp;quot;k&amp;quot;]], axis=2
+),
+&amp;quot;v&amp;quot;: mx.concatenate(
+[text_intermediates[&amp;quot;v&amp;quot;], image_intermediates[&amp;quot;v&amp;quot;]], axis=2
+),
+&amp;quot;scale&amp;quot;: 1.0 / np.sqrt(self.per_head_dim),
+}
+else:
+multimodal_sdpa_inputs = {
+&amp;quot;q&amp;quot;: rearrange_for_sdpa(
+mx.concatenate(
+[image_intermediates[&amp;quot;q&amp;quot;], text_intermediates[&amp;quot;q&amp;quot;]], axis=1
+)
+),
+&amp;quot;k&amp;quot;: rearrange_for_sdpa(
+mx.concatenate(
+[image_intermediates[&amp;quot;k&amp;quot;], text_intermediates[&amp;quot;k&amp;quot;]], axis=1
+)
+),
+&amp;quot;v&amp;quot;: rearrange_for_sdpa(
+mx.concatenate(
+[image_intermediates[&amp;quot;v&amp;quot;], text_intermediates[&amp;quot;v&amp;quot;]], axis=1
+)
+),
+&amp;quot;scale&amp;quot;: 1.0 / np.sqrt(self.per_head_dim),
+}
+if self.config.pos_embed_type == PositionalEncoding.PreSDPARope:
+assert positional_encodings is not None
+multimodal_sdpa_inputs[&amp;quot;q&amp;quot;] = RoPE.apply(
+multimodal_sdpa_inputs[&amp;quot;q&amp;quot;], positional_encodings
+)
+multimodal_sdpa_inputs[&amp;quot;k&amp;quot;] = RoPE.apply(
+multimodal_sdpa_inputs[&amp;quot;k&amp;quot;], positional_encodings
+)
+if self.config.low_memory_mode:
+multimodal_sdpa_inputs[
+&amp;quot;memory_efficient_threshold&amp;quot;
+] = SDPA_FLASH_ATTN_THRESHOLD
+# Compute multi-modal SDPA
+sdpa_outputs = (
+self.sdpa(**multimodal_sdpa_inputs)
+.transpose(0, 2, 1, 3)
+.reshape(batch, -1, 1, self.config.hidden_size)
+)
+# Split into image-text sequences for post-SDPA layers
+img_seq_len = latent_image_embeddings.shape[1]
+txt_seq_len = token_level_text_embeddings.shape[1]
+if self.config.depth_unified &amp;gt; 0:
+text_sdpa_output = sdpa_outputs[:, :txt_seq_len, :, :]
+image_sdpa_output = sdpa_outputs[:, txt_seq_len:, :, :]
+else:
+image_sdpa_output = sdpa_outputs[:, :img_seq_len, :, :]
+text_sdpa_output = sdpa_outputs[:, -txt_seq_len:, :, :]
+# Post-SDPA layers
+latent_image_embeddings = self.image_transformer_block.post_sdpa(
+residual=latent_image_embeddings,
+sdpa_output=image_sdpa_output,
+**image_intermediates,
+)
+if self.text_transformer_block.skip_post_sdpa:
+# Text token related outputs from the final layer do not impact the model output
+token_level_text_embeddings = None
+else:
+token_level_text_embeddings = self.text_transformer_block.post_sdpa(
+residual=token_level_text_embeddings,
+sdpa_output=text_sdpa_output,
+**text_intermediates,
+)
+return latent_image_embeddings, token_level_text_embeddings
+&lt;/code>&lt;/pre></description></item><item><title>From Juptyer to Blog</title><link>https://ericboittier@githubpages.io/post/test-notebook/</link><pubDate>Thu, 17 Aug 2023 00:00:00 +0000</pubDate><guid>https://ericboittier@githubpages.io/post/test-notebook/</guid><description>&lt;p>The following post was made
 by creating a Jupyter notebook and converting it to a blog post,
 using the nbconvert tool.&lt;/p>
 &lt;pre>&lt;code class="language-bash">jupyter nbconvert --to markdown Test\ Notebook\ Blog\ Post.ipynb --NbConvertApp.output_files_dir=.
