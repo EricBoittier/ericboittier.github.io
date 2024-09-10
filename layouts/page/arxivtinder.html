@@ -523,11 +523,11 @@
         age.textContent = storedArticle ? storedArticle.published : "";
         age.setAttribute("id", "age");
 
-        let authors = document.createElement("p");
-        authors.textContent = storedArticle
-          ? storedArticle.authors.join(", ")
-          : "";
-        authors.setAttribute("id", "authors");
+        //let authors = document.createElement("p");
+        //authors.textContent = storedArticle
+        //  ? storedArticle.authors.join(", ")
+        //  : "";
+        //authors.setAttribute("id", "authors");
         // make a div which centers the text
         let divObj = document.createElement("div");
         card.style.textAlign = "center";
@@ -571,8 +571,8 @@
           "*Loading* demure preprints based on your preferences...";
         let age = document.getElementById("age");
         age.textContent = "";
-        let authors = document.getElementById("authors");
-        authors.textContent = "";
+        //let authors = document.getElementById("authors");
+        //authors.textContent = "";
         //carousel.push();
         carousel.init();
       });
