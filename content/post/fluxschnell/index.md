@@ -85,13 +85,77 @@ Quite impressive. I thought diffusion would require more steps.
 In thermodynamics, diffusion is a slow process, the long-time limit of
 how much a system can change.
 Certainly, something exciting is going on under the hood.
-The model is based on an architecture published on "Scaling Rectified Flow Transformers for High-Resolution Image Synthesis" by Stability AI ([paper](https://arxiv.org/pdf/2403.03206]).
+The model is based on an architecture published on "Scaling Rectified Flow Transformers for High-Resolution Image Synthesis" by Stability AI ([paper](https://arxiv.org/pdf/2403.03206])).
+
+Let's look a bit deeper in the code:
+
+The text is transformed into an embedding, which is used to condition the image generation. The function 'encode_text' is used to encode the text into an embedding.
+
+```python
+ conditioning, pooled_conditioning = self.encode_text(
+            text, cfg_weight, negative_text
+        )
+        mx.eval(conditioning)
+        mx.eval(pooled_conditioning)
+```
+
+The diffusion steps take place inside the `FluxPipeline` class, in the `generate_image` method.
+The specific function inside this method is:
+
+```python
+def denoise_latents(
+self,
+conditioning,
+pooled_conditioning,
+num_steps: int = 2,
+cfg_weight: float = 0.0,
+latent_size: Tuple[int] = (64, 64),
+seed=None,
+image_path: Optional[str] = None,
+denoise: float = 1.0,
+): # Set the PRNG state
+seed = int(time.time()) if seed is None else seed
+logger.info(f"Seed: {seed}")
+mx.random.seed(seed)
+x_T = self.get_empty_latent(*latent_size)
+if image_path is None:
+    denoise = 1.0
+else:
+    x_T = self.encode_image_to_latents(image_path, seed=seed)
+    x_T = self.latent_format.process_in(x_T)
+noise = self.get_noise(seed, x_T)
+sigmas = self.get_sigmas(self.sampler, num_steps)
+sigmas = sigmas[int(num_steps * (1 - denoise)) :]
+extra_args = {
+    "conditioning": conditioning,
+    "cfg_weight": cfg_weight,
+    "pooled_conditioning": pooled_conditioning,
+}
+noise_scaled = self.sampler.noise_scaling(
+    sigmas[0], noise, x_T, self.max_denoise(sigmas)
+)
+latent, iter_time = sample_euler(
+    CFGDenoiser(self), noise_scaled, sigmas, extra_args=extra_args
+)
+
+latent = self.latent_format.process_out(latent)
+
+return latent, iter_time
+```
+
+The function 'decode_latents_to_image' is used to decode the latent representation to an image. It calls the decoder and then the clip module to get the final image.
+The code:
+
+```python
+    def decode_latents_to_image(self, x_t):
+        x = self.decoder(x_t)
+        x = mx.clip(x / 2 + 0.5, 0, 1)
+        return x
+```
 
 # The architecture
 
 ![architecture](figure.png)
-
-Let's see the code:
 
 ```python
 class MMDiT(nn.Module):
@@ -220,6 +284,9 @@ def __init__(self, config: MMDiTConfig):
             )
         return latent_image_embeddings
 ```
+
+The model is composed of several blocks. The first block is the input adapter and embeddings.
+The first loop is the multi-modal transformer blocks, and the second loop is the unified transformer blocks, before the final layer.
 
 # The multi-modal transformer block
 
@@ -428,6 +495,8 @@ class UnifiedTransformerBlock(nn.Module):
 ```
 
 # The final layer
+
+The final transformation of the latent image embeddings.
 
 ```python
 class FinalLayer(nn.Module):

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts | Eric Boittier</title><link>https://www.ericboittier.github.io/post/</link><atom:link href="https://www.ericboittier.github.io/post/index.xml" rel="self" type="application/rss+xml"/><description>Posts</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 17 Aug 2023 00:00:00 +0000</lastBuildDate><image><url>https://www.ericboittier.github.io/media/icon_hu9ac327d6012d36714959b8b60a0f0d52_7608_512x512_fill_lanczos_center_3.png</url><title>Posts</title><link>https://www.ericboittier.github.io/post/</link></image><item><title>Flux.1</title><link>https://www.ericboittier.github.io/post/fluxschnell/</link><pubDate>Thu, 17 Aug 2023 00:00:00 +0000</pubDate><guid>https://www.ericboittier.github.io/post/fluxschnell/</guid><description>&lt;p>Flux is a generative diffusion model from Blackforest Labs. Diffusion is a process by which particles spread out from a high concentration to a low concentration. The model uses a series of transformations to generate images, starting from a simple noise vector and gradually generating an image over some number of steps.
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts | Eric Boittier</title><link>https://ericboittier.github.io/post/</link><atom:link href="https://ericboittier.github.io/post/index.xml" rel="self" type="application/rss+xml"/><description>Posts</description><generator>Wowchemy (https://wowchemy.com)</generator><language>en-us</language><lastBuildDate>Thu, 17 Aug 2023 00:00:00 +0000</lastBuildDate><image><url>https://ericboittier.github.io/media/icon_hu9ac327d6012d36714959b8b60a0f0d52_7608_512x512_fill_lanczos_center_3.png</url><title>Posts</title><link>https://ericboittier.github.io/post/</link></image><item><title>Flux.1</title><link>https://ericboittier.github.io/post/fluxschnell/</link><pubDate>Thu, 17 Aug 2023 00:00:00 +0000</pubDate><guid>https://ericboittier.github.io/post/fluxschnell/</guid><description>&lt;p>Flux is a generative diffusion model from Blackforest Labs. Diffusion is a process by which particles spread out from a high concentration to a low concentration. The model uses a series of transformations to generate images, starting from a simple noise vector and gradually generating an image over some number of steps.
 Here is some output of the model:&lt;/p>
 &lt;p>&lt;a href="https://github.com/argmaxinc/DiffusionKit/tree/main" target="_blank" rel="noopener">Diffusion-kit&lt;/a> provides a simple interface to run the model on a macbook,&lt;/p>
 &lt;pre>&lt;code class="language-bash">diffusionkit-cli --prompt &amp;quot;prompt&amp;quot; \
@@ -32,7 +32,7 @@ image.save(&amp;quot;image.png&amp;quot;)
 /post/fluxschnell/image_hu7f8f19a1c5b64af49ec81e894680faf0_321997_da0e88cf982901372142a87a3049e92c.webp 400w,
 /post/fluxschnell/image_hu7f8f19a1c5b64af49ec81e894680faf0_321997_e24e7e401a8090e21304d658e97ac3de.webp 760w,
 /post/fluxschnell/image_hu7f8f19a1c5b64af49ec81e894680faf0_321997_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-src="https://www.ericboittier.github.io/post/fluxschnell/image_hu7f8f19a1c5b64af49ec81e894680faf0_321997_da0e88cf982901372142a87a3049e92c.webp"
+src="https://ericboittier.github.io/post/fluxschnell/image_hu7f8f19a1c5b64af49ec81e894680faf0_321997_da0e88cf982901372142a87a3049e92c.webp"
 width="512"
 height="512"
 loading="lazy" data-zoomable />&lt;/div>
@@ -42,7 +42,61 @@ loading="lazy" data-zoomable />&lt;/div>
 In thermodynamics, diffusion is a slow process, the long-time limit of
 how much a system can change.
 Certainly, something exciting is going on under the hood.
-The model is based on an architecture published on &amp;ldquo;Scaling Rectified Flow Transformers for High-Resolution Image Synthesis&amp;rdquo; by Stability AI (&lt;a href="https://arxiv.org/pdf/2403.03206]" target="_blank" rel="noopener">paper&lt;/a>.&lt;/p>
+The model is based on an architecture published on &amp;ldquo;Scaling Rectified Flow Transformers for High-Resolution Image Synthesis&amp;rdquo; by Stability AI (&lt;a href="https://arxiv.org/pdf/2403.03206]" target="_blank" rel="noopener">paper&lt;/a>).&lt;/p>
+&lt;p>Let&amp;rsquo;s look a bit deeper in the code:&lt;/p>
+&lt;p>The text is transformed into an embedding, which is used to condition the image generation. The function &amp;rsquo;encode_text&amp;rsquo; is used to encode the text into an embedding.&lt;/p>
+&lt;pre>&lt;code class="language-python"> conditioning, pooled_conditioning = self.encode_text(
+text, cfg_weight, negative_text
+)
+mx.eval(conditioning)
+mx.eval(pooled_conditioning)
+&lt;/code>&lt;/pre>
+&lt;p>The diffusion steps take place inside the &lt;code>FluxPipeline&lt;/code> class, in the &lt;code>generate_image&lt;/code> method.
+The specific function inside this method is:&lt;/p>
+&lt;pre>&lt;code class="language-python">def denoise_latents(
+self,
+conditioning,
+pooled_conditioning,
+num_steps: int = 2,
+cfg_weight: float = 0.0,
+latent_size: Tuple[int] = (64, 64),
+seed=None,
+image_path: Optional[str] = None,
+denoise: float = 1.0,
+): # Set the PRNG state
+seed = int(time.time()) if seed is None else seed
+logger.info(f&amp;quot;Seed: {seed}&amp;quot;)
+mx.random.seed(seed)
+x_T = self.get_empty_latent(*latent_size)
+if image_path is None:
+denoise = 1.0
+else:
+x_T = self.encode_image_to_latents(image_path, seed=seed)
+x_T = self.latent_format.process_in(x_T)
+noise = self.get_noise(seed, x_T)
+sigmas = self.get_sigmas(self.sampler, num_steps)
+sigmas = sigmas[int(num_steps * (1 - denoise)) :]
+extra_args = {
+&amp;quot;conditioning&amp;quot;: conditioning,
+&amp;quot;cfg_weight&amp;quot;: cfg_weight,
+&amp;quot;pooled_conditioning&amp;quot;: pooled_conditioning,
+}
+noise_scaled = self.sampler.noise_scaling(
+sigmas[0], noise, x_T, self.max_denoise(sigmas)
+)
+latent, iter_time = sample_euler(
+CFGDenoiser(self), noise_scaled, sigmas, extra_args=extra_args
+)
+latent = self.latent_format.process_out(latent)
+return latent, iter_time
+&lt;/code>&lt;/pre>
+&lt;p>The function &amp;lsquo;decode_latents_to_image&amp;rsquo; is used to decode the latent representation to an image. It calls the decoder and then the clip module to get the final image.
+The code:&lt;/p>
+&lt;pre>&lt;code class="language-python"> def decode_latents_to_image(self, x_t):
+x = self.decoder(x_t)
+x = mx.clip(x / 2 + 0.5, 0, 1)
+return x
+&lt;/code>&lt;/pre>
 &lt;h1 id="the-architecture">The architecture&lt;/h1>
 &lt;p>
 &lt;figure >
@@ -51,13 +105,12 @@ The model is based on an architecture published on &amp;ldquo;Scaling Rectified 
 /post/fluxschnell/figure_hud725ec3a009e98800b3eb1d4b4fa0d69_422974_790cbba67b2822c515f7f39430f8518f.webp 400w,
 /post/fluxschnell/figure_hud725ec3a009e98800b3eb1d4b4fa0d69_422974_860ec3b4af5dfea78aa0a84bf7df48f2.webp 760w,
 /post/fluxschnell/figure_hud725ec3a009e98800b3eb1d4b4fa0d69_422974_1200x1200_fit_q75_h2_lanczos_3.webp 1200w"
-src="https://www.ericboittier.github.io/post/fluxschnell/figure_hud725ec3a009e98800b3eb1d4b4fa0d69_422974_790cbba67b2822c515f7f39430f8518f.webp"
+src="https://ericboittier.github.io/post/fluxschnell/figure_hud725ec3a009e98800b3eb1d4b4fa0d69_422974_790cbba67b2822c515f7f39430f8518f.webp"
 width="760"
 height="586"
 loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
 &lt;/p>
-&lt;p>Let&amp;rsquo;s see the code:&lt;/p>
 &lt;pre>&lt;code class="language-python">class MMDiT(nn.Module):
 def __init__(self, config: MMDiTConfig):
 super().__init__()
@@ -166,6 +219,8 @@ vae_latent_dim=self.config.vae_latent_dim,
 )
 return latent_image_embeddings
 &lt;/code>&lt;/pre>
+&lt;p>The model is composed of several blocks. The first block is the input adapter and embeddings.
+The first loop is the multi-modal transformer blocks, and the second loop is the unified transformer blocks, before the final layer.&lt;/p>
 &lt;h1 id="the-multi-modal-transformer-block">The multi-modal transformer block&lt;/h1>
 &lt;pre>&lt;code class="language-python">class MultiModalTransformerBlock(nn.Module):
 def __init__(self, config: MMDiTConfig, skip_text_post_sdpa: bool = False):
@@ -341,6 +396,7 @@ sdpa_output=sdpa_outputs,
 return latent_unified_embeddings
 &lt;/code>&lt;/pre>
 &lt;h1 id="the-final-layer">The final layer&lt;/h1>
+&lt;p>The final transformation of the latent image embeddings.&lt;/p>
 &lt;pre>&lt;code class="language-python">class FinalLayer(nn.Module):
 def __init__(self, config: MMDiTConfig):
 super().__init__()
@@ -369,7 +425,7 @@ residual_scale=residual_scale,
 norm_module=self.norm_final,
 )
 return self.linear(latent_image_embeddings)
-&lt;/code>&lt;/pre></description></item><item><title>From Juptyer to Blog</title><link>https://www.ericboittier.github.io/post/test-notebook/</link><pubDate>Thu, 17 Aug 2023 00:00:00 +0000</pubDate><guid>https://www.ericboittier.github.io/post/test-notebook/</guid><description>&lt;p>The following post was made
+&lt;/code>&lt;/pre></description></item><item><title>From Juptyer to Blog</title><link>https://ericboittier.github.io/post/test-notebook/</link><pubDate>Thu, 17 Aug 2023 00:00:00 +0000</pubDate><guid>https://ericboittier.github.io/post/test-notebook/</guid><description>&lt;p>The following post was made
 by creating a Jupyter notebook and converting it to a blog post,
 using the nbconvert tool.&lt;/p>
 &lt;pre>&lt;code class="language-bash">jupyter nbconvert --to markdown Test\ Notebook\ Blog\ Post.ipynb --NbConvertApp.output_files_dir=.
@@ -397,7 +453,7 @@ Assuming you already have an index.md file with front matter, something like:&lt
 &lt;div class="d-flex justify-content-center">
 &lt;div class="w-100" >&lt;img src="./Test%20Notebook%20Blog%20Post_5_1.png" alt="png" loading="lazy" data-zoomable />&lt;/div>
 &lt;/div>&lt;/figure>
-&lt;/p></description></item><item><title>Fortran is fast. Profile your code to make it faster!</title><link>https://www.ericboittier.github.io/post/profiling-fortan/</link><pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.ericboittier.github.io/post/profiling-fortan/</guid><description>&lt;h2 id="all-about-fortran">All About Fortran&lt;/h2>
+&lt;/p></description></item><item><title>Fortran is fast. Profile your code to make it faster!</title><link>https://ericboittier.github.io/post/profiling-fortan/</link><pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate><guid>https://ericboittier.github.io/post/profiling-fortan/</guid><description>&lt;h2 id="all-about-fortran">All About Fortran&lt;/h2>
 &lt;h3 id="what-is-fortran">What is Fortran?&lt;/h3>
 &lt;p>Fortran is a dinosaur code language. It was released around 65 years ago (date of writing) by John Backus and IBM for electric computing machines powered by the fossilized remains of dinosaurs who lived around 65 million years ago.&lt;/p>
 &lt;p>&amp;lsquo;Too lazy&amp;rsquo; to write assembly, Backus wrote this compiled imperative language to save himself time when composing complicated mathematical formulas, giving rise to the &amp;lsquo;Formula Translation&amp;rsquo; language or FORTRAN. Nowadays, FORTRAN is considered too verbose by modern programming standards. Although much slower, Python might be considered the new Formula Translation language. Routines like the Fast Fourier Transform have been reduced to one line (np.fft()), where the number of lines of pure FORTRAN and assembly code needed are around 1 to 2 orders of magnitude longer, respectively.&lt;/p>
@@ -419,7 +475,7 @@ Results often show the time spent in individual routines, the number of calls, a
 To see the results of the profiling&lt;/p>
 &lt;pre>&lt;code class="language-bash">gprof -l -b ./yourcode &amp;gt; gprof.log
 &lt;/code>&lt;/pre>
-&lt;p>The -g and -l flags in the compilation and profiling steps, respectively, allow for a line by line analysis of time spent during computation. Without these options, the profiler will show total time spent in each subroutine.&lt;/p></description></item><item><title>Notes on Baysian Optmization</title><link>https://www.ericboittier.github.io/post/notes/</link><pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate><guid>https://www.ericboittier.github.io/post/notes/</guid><description>&lt;h2 id="surrogate-models-to-the-rescue">Surrogate Models to the Rescue&lt;/h2>
+&lt;p>The -g and -l flags in the compilation and profiling steps, respectively, allow for a line by line analysis of time spent during computation. Without these options, the profiler will show total time spent in each subroutine.&lt;/p></description></item><item><title>Notes on Baysian Optmization</title><link>https://ericboittier.github.io/post/notes/</link><pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate><guid>https://ericboittier.github.io/post/notes/</guid><description>&lt;h2 id="surrogate-models-to-the-rescue">Surrogate Models to the Rescue&lt;/h2>
 &lt;p>If you have a cost function that is too expensive to evaluate, you should check out Bayesian Optimization.&lt;/p>
 &lt;p>The idea is to use a surrogate model to approximate the cost function and then use this model to find the best point to evaluate next.&lt;/p>
 &lt;p>The most common surrogate model is a Gaussian Process (GP), which is a distribution over functions. The GP is defined by its mean function $m(x)$ and covariance function $k(x, x&amp;rsquo;)$:&lt;/p>
