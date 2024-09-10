@@ -23,6 +23,7 @@
       height: 100%;
       padding: 1%;
       position: absolute;
+      top: 10%;
       overflow: visible;
       /*      background-color: rgb(245, 247, 250);*/
     }
@@ -496,23 +497,34 @@
       push() {
         let card = document.createElement("div");
         // append the card to the board
-
         card.classList.add("card");
-        // add random color gradient to the cards
         var deg = Math.floor(Math.random() * 360);
-
+        var hex1 = createHex();
+        var hex2 = complementaryHex(hex1);
+        var stop1 = Math.min(40, Math.max(1, Math.floor(Math.random() * 100)));
+        console.log(hex1, hex2, stop1);
+        var type = Math.floor(Math.random() * 2);
+        // randomly change between radial and linear gradients
         var gradient =
-          "linear-gradient(" +
-          deg +
-          "deg, " +
-          "#1A" +
-          createHex() +
-          ", " +
-          "#1A" +
-          createHex() +
-          ")";
+          type === 0
+            ? "radial-gradient(circle, #" +
+              hex1 +
+              " " +
+              stop1 +
+              "%, #" +
+              hex2 +
+              " 100%)"
+            : "linear-gradient(" +
+              deg +
+              "deg, " +
+              "#" +
+              hex1 +
+              ", " +
+              "#" +
+              hex2 +
+              ")";
+
         card.style.background = gradient;
-        card.style.backgroundOpacity = 0.1;
         let title = document.createElement("p");
         title.setAttribute("id", "title");
         let storedArticle = this.articles[this.currentArticle]; // get the current article
@@ -523,11 +535,6 @@
         age.textContent = storedArticle ? storedArticle.published : "";
         age.setAttribute("id", "age");
 
-        //let authors = document.createElement("p");
-        //authors.textContent = storedArticle
-        //  ? storedArticle.authors.join(", ")
-        //  : "";
-        //authors.setAttribute("id", "authors");
         // make a div which centers the text
         let divObj = document.createElement("div");
         card.style.textAlign = "center";
@@ -546,16 +553,37 @@
       }
     }
 
+    function complementaryHex(hex) {
+      var hexValues = "0123456789abcdef";
+      var hexCode = "";
+      for (var i = 0; i < 6; i++) {
+        var index = hexValues.indexOf(hex.charAt(i));
+        // random up or down
+        shift = Math.floor(Math.random() * 2) === 0 ? 1 : -1;
+        // mod 16
+        index = (index * shift + 16) % 16;
+        hexCode += hexValues.charAt(index);
+      }
+      return hexCode + "33";
+    }
+
     function createHex() {
       var hexCode1 = "";
+      //var hexValues1 = "3489abcf";
       var hexValues1 = "0123456789abcdef";
-
+      // force a chanel to be ff
+      var ffs = Math.floor(Math.random() * 3);
       for (var i = 0; i < 6; i++) {
-        hexCode1 += hexValues1.charAt(
-          Math.floor(Math.random() * hexValues1.length),
-        );
+        if (i === ffs * 2 || i === ffs * 2 + 1) {
+          hexCode1 += "f";
+        } else {
+          hexCode1 += hexValues1.charAt(
+            Math.floor(Math.random() * hexValues1.length),
+          );
+        }
       }
-      return hexCode1;
+      console.log(hexCode1);
+      return hexCode1 + "33";
     }
 
     let board = document.querySelector("#board");
