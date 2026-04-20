@@ -3,7 +3,7 @@
 
 = Publications
 
-Peer-reviewed articles and preprints generated from `assets/citations.csv`.
+Peer-reviewed articles and preprints.
 
 == 2026
 - #link("https://scholar.google.com/scholar?q=Cluster+Models+for+Next%E2%80%90Generation%2C+Machine%E2%80%90Learning%E2%80%90Based+Energy+Functions+for+Molecular+Simulations")[Cluster Models for Next‐Generation, Machine‐Learning‐Based Energy Functions for Molecular Simulations]  \
