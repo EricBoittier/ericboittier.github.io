@@ -7,23 +7,46 @@
 
 Read posts directly from this timeline, or open each dedicated page from the title.
 
-#tufted.margin-note[
-  #text(size: 0.85em, weight: "semibold")[Contents]
-  #linebreak()
-  #link("/blog/test-notebook/")[2023-08-17 · From Jupyter to Blog]
-  #linebreak()
-  #link("/blog/fluxschnell/")[2023-08-17 · Flux.1]
-  #linebreak()
-  #link("/blog/profiling-fortan/")[2022-08-17 · Fortran is fast]
-  #linebreak()
-  #link("/blog/notes/")[2022-08-01 · Notes on Bayesian Optimization]
-]
-
 #let render-post(path) = {
   let md-content = read(path)
   let md-content = md-content.replace(regex("(?s)^---.*?---\\s*"), "")
   cmarker.render(md-content, math: mitex)
 }
+
+#let posts = (
+  (
+    date: "2023-08-17",
+    title: "From Jupyter to Blog",
+    url: "/blog/test-notebook/",
+    path: "test-notebook/post.md",
+  ),
+  (
+    date: "2023-08-17",
+    title: "Flux.1",
+    url: "/blog/fluxschnell/",
+    path: "fluxschnell/post.md",
+  ),
+  (
+    date: "2022-08-17",
+    title: "Fortran is fast. Profile your code to make it faster!",
+    url: "/blog/profiling-fortan/",
+    path: "profiling-fortan/post.md",
+  ),
+  (
+    date: "2022-08-01",
+    title: "Notes on Bayesian Optimization",
+    url: "/blog/notes/",
+    path: "notes/post.md",
+  ),
+)
+
+#tufted.margin-note[
+  #text(size: 20em, weight: "semibold")[Contents]
+  #for post in posts [
+    #linebreak()
+    #link(post.url)[#text(size: 20em)[#post.date · #post.title]]
+  ]
+]
 
 #let timeline-entry(date, title, url, post-path) = [
   #table(
@@ -33,7 +56,7 @@ Read posts directly from this timeline, or open each dedicated page from the tit
     align: (left, left),
     [#text(weight: "semibold")[#date]],
     [
-      #link(url)[#text(weight: "semibold")[#title]]
+      #link(url)[#text(weight: "semibold", size: 3.1em)[#title]]
       #linebreak()
       #text(size: 0.85em, fill: rgb("#555"))[Direct link: #link(url)[#url]]
       #linebreak()
@@ -43,26 +66,10 @@ Read posts directly from this timeline, or open each dedicated page from the tit
   )
 ]
 
-#timeline-entry("2023-08-17", "From Jupyter to Blog", "/blog/test-notebook/", "test-notebook/post.md")
-#linebreak()
-#linebreak()
-#linebreak()
-#linebreak()
-
-#timeline-entry("2023-08-17", "Flux.1", "/blog/fluxschnell/", "fluxschnell/post.md")
-#linebreak()
-#linebreak()
-#linebreak()
-#linebreak()
-
-#timeline-entry("2022-08-17", "Fortran is fast. Profile your code to make it faster!", "/blog/profiling-fortan/", "profiling-fortan/post.md")
-#linebreak()
-#linebreak()
-#linebreak()
-#linebreak()
-
-#timeline-entry("2022-08-01", "Notes on Bayesian Optimization", "/blog/notes/", "notes/post.md")
-#linebreak()
-#linebreak()
-#linebreak()
-#linebreak()
+#for post in posts [
+  #timeline-entry(post.date, post.title, post.url, post.path)
+  #linebreak()
+  #linebreak()
+  #linebreak()
+  #linebreak()
+]

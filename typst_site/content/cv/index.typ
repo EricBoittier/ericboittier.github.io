@@ -43,6 +43,12 @@ I build machine learning methods and scientific software for chemistry, molecula
 - RDKit bug fixes across C++ and Python bindings
 - OpenCV + SQL tooling for inventory tracking
 
+
+
+== Education
+- Ph.D. in Chemistry, University of Basel (2020--2025). Thesis: *Molecular Deep Learning for Quantitative Simulations and Electrostatic Models*.
+- Bachelor of Advanced Science in Chemistry, University of Queensland (2015--2020). Thesis: *Development of Computational Tools for the Rational Design of Glycosaminoglycan Mimetics*.
+
 == Papers
 #{
   let bib = load-bibliography(read("papers.bib"))
@@ -51,8 +57,3 @@ I build machine learning methods and scientific software for chemistry, molecula
     - #data.author, #emph(data.title), #data.journal, #data.year. DOI: #link(data.url)[#data.doi]
   ]
 }
-
-
-== Education
-- Ph.D. in Chemistry, University of Basel (2020--2025). Thesis: *Molecular Deep Learning for Quantitative Simulations and Electrostatic Models*.
-- Bachelor of Advanced Science in Chemistry, University of Queensland (2015--2020). Thesis: *Development of Computational Tools for the Rational Design of Glycosaminoglycan Mimetics*.
