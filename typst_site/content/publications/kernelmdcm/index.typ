@@ -1,4 +1,4 @@
-#import "../index.typ": template, tufted
+#import "../../../config.typ": template, tufted
 #show: template.with(title: "Kernel-based Minimal Distributed Charges")
 
 = Kernel-based Minimal Distributed Charges: A Conformationally Dependent ESP-Model for Molecular Simulations

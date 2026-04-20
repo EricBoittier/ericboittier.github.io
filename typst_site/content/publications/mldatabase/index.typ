@@ -1,4 +1,4 @@
-#import "../index.typ": template, tufted
+#import "../../../config.typ": template, tufted
 #show: template.with(title: "Impact of Quantum Chemical Databases")
 
 = Impact of the Characteristics of Quantum Chemical Databases on Machine Learning Prediction of Tautomerization Energies

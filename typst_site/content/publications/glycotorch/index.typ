@@ -1,4 +1,4 @@
-#import "../index.typ": template, tufted
+#import "../../../config.typ": template, tufted
 #show: template.with(title: "GlycoTorch Vina")
 
 = GlycoTorch Vina: Docking Designed and Tested for Glycosaminoglycans

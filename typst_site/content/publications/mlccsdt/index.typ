@@ -1,4 +1,4 @@
-#import "../index.typ": template, tufted
+#import "../../../config.typ": template, tufted
 #show: template.with(title: "Transfer Learning to CCSD(T)")
 
 = Transfer Learning to CCSD(T): Accurate Anharmonic Frequencies from Machine Learning Models

@@ -1,4 +1,4 @@
-#import "../index.typ": template, tufted
+#import "../../../config.typ": template, tufted
 #import "@preview/cmarker:0.1.8"
 #import "@preview/mitex:0.2.6": mitex
 #show: template.with(title: "From Jupyter to Blog")

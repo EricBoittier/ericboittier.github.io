@@ -1,4 +1,4 @@
-#import "../index.typ": template, tufted
+#import "../../../config.typ": template, tufted
 #show: template.with(title: "Assessing Molecular Docking Tools")
 
 = Assessing Molecular Docking Tools to Guide Targeted Drug Discovery of CD38 Inhibitors

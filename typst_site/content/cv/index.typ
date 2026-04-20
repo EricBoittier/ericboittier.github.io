@@ -1,4 +1,4 @@
-#import "../index.typ": template, tufted
+#import "../../config.typ": template, tufted
 #show: template
 #import "@preview/citegeist:0.2.2": load-bibliography
 
