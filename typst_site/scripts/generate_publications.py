@@ -6,6 +6,7 @@ from __future__ import annotations
 import csv
 from collections import defaultdict
 from pathlib import Path
+from urllib.parse import quote_plus
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,6 +35,21 @@ def fmt_authors(authors: str) -> str:
     return ", ".join(names[:3]) + ", et al."
 
 
+def typst_escape(text: str) -> str:
+    return (text or "").replace("\\", "\\\\").replace('"', '\\"')
+
+
+def publication_url(title: str, publication: str) -> str:
+    pub = publication or ""
+    if "arxiv:" in pub.lower():
+        marker = pub.lower().split("arxiv:", 1)[1].strip()
+        arxiv_id = marker.split()[0].strip(".,;)")
+        if arxiv_id:
+            return f"https://arxiv.org/abs/{arxiv_id}"
+    query = quote_plus(title)
+    return f"https://scholar.google.com/scholar?q={query}"
+
+
 def fmt_citation(row: dict[str, str]) -> str:
     title = clean(value(row, "Title")) or "Untitled"
     publication = clean(value(row, "Publication")) or "Unpublished"
@@ -50,7 +66,9 @@ def fmt_citation(row: dict[str, str]) -> str:
     if pages:
         venue += f", {pages}"
 
-    return f"- {title}  \\\n  {venue}. Authors: {authors}."
+    url = publication_url(title, publication)
+    linked_title = f'#link("{typst_escape(url)}")[{typst_escape(title)}]'
+    return f"- {linked_title}  \\\n  {venue}. Authors: {authors}."
 
 
 def load_rows() -> list[dict[str, str]]:
