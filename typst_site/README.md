@@ -22,7 +22,6 @@ Generated HTML is written to `_site/`.
 - `content/cv/` — CV page and bibliography files
 - `content/contact/` — contact page
 - `content/all-posts/` — archive page
-- `content/arxiv-tinder/` — arXiv Tinder route page
 - `content/privacy/` — privacy placeholder page
 - `content/terms/` — terms placeholder page
 

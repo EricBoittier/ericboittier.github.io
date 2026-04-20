@@ -27,7 +27,6 @@ Generated files are written to `typst_site/_site/`.
 - `typst_site/content/cv/` - CV page + bibliography
 - `typst_site/content/contact/` - contact page
 - `typst_site/content/all-posts/` - archive page
-- `typst_site/content/arxiv-tinder/` - arXiv Tinder route page
 
 ## Deployment
 
