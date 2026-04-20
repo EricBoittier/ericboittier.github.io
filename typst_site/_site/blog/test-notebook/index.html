@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>From Jupyter to Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tufte-css/1.8.0/tufte.min.css">
+    <link rel="stylesheet" href="/assets/tufted.css">
+    <link rel="stylesheet" href="/assets/custom.css">
+  </head>
+  <body>
+    <header>
+      <nav><a href="/">Home</a><a href="/about/">About</a><a href="/blog/">Posts</a><a href="/publications/">Publications</a><a href="/projects/">Projects</a><a href="/cv/">CV</a><a href="/contact/">Contact</a><a href="/all-posts/">Archive</a><a href="/arxiv-tinder/">arXiv Tinder</a></nav>
+    </header>
+    <article>
+      <section>
+        <h2>From Jupyter to Blog</h2>
+        <p>Published: 2022-08-17 | Updated: 2023-08-17</p>
+        <p>The following post was made by creating a Jupyter notebook and converting it to a blog post, using the nbconvert tool.</p>
+        <pre><code data-lang="bash"><span style="color: #4b69c6">jupyter</span> nbconvert --to markdown Test<span style="color: #1d6c76">\ </span>Notebook<span style="color: #1d6c76">\ </span>Blog<span style="color: #1d6c76">\ </span>Post.ipynb --NbConvertApp.output_files_dir=.<br></code></pre>
+        <p>The command above will convert the notebook to Markdown and save it in the same directory as the notebook. Adding the usual Hugo front matter to the markdown file will allow it to be rendered as a blog post. Assuming you already have an index.md file with front matter, something like:</p>
+        <pre><code data-lang="bash"><span style="color: #4b69c6">cat</span> <span style="color: #198810">'</span><span style="color: #198810">Test Notebook Blog Post.md</span><span style="color: #198810">'</span> <span style="color: #d73948">|</span> <span style="color: #4b69c6">tee</span> -a index.md<br></code></pre>
+        <p>…will do the trick!</p>
+        <h2>Test Notebook Blog Post</h2>
+        <pre><code data-lang="python"><span style="color: #d73948">import</span> matplotlib.pyplot <span style="color: #d73948">as</span> plt<br></code></pre>
+        <pre><code data-lang="python"><span style="color: #d73948">import</span> numpy <span style="color: #d73948">as</span> np<br></code></pre>
+        <p>Let’s do something a bit random!</p>
+        <pre><code data-lang="python">X <span style="color: #d73948">=</span> np.random.<span style="color: #4b69c6">rand</span>(<span style="color: #b60157">100</span>).<span style="color: #4b69c6">reshape</span>(<span style="color: #b60157">10</span>,<span style="color: #b60157">10</span>)<br></code></pre>
+        <pre><code data-lang="python">plt.<span style="color: #4b69c6">imshow</span>(X)<br></code></pre>
+        <pre><code>&lt;matplotlib.image.AxesImage at 0x1248bd4b0><br></code></pre>
+        <p><em>Notebook output image omitted in the migrated site because the original PNG asset was not present in source control.</em></p>
+      </section>
+    </article>
+  </body>
+</html>

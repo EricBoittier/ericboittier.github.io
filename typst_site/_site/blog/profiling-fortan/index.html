@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fortran is fast. Profile your code to make it faster!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tufte-css/1.8.0/tufte.min.css">
+    <link rel="stylesheet" href="/assets/tufted.css">
+    <link rel="stylesheet" href="/assets/custom.css">
+  </head>
+  <body>
+    <header>
+      <nav><a href="/">Home</a><a href="/about/">About</a><a href="/blog/">Posts</a><a href="/publications/">Publications</a><a href="/projects/">Projects</a><a href="/cv/">CV</a><a href="/contact/">Contact</a><a href="/all-posts/">Archive</a><a href="/arxiv-tinder/">arXiv Tinder</a></nav>
+    </header>
+    <article>
+      <section>
+        <h2>Fortran is fast. Profile your code to make it faster!</h2>
+        <p>Published: 2022-08-17</p>
+        <h3>All About Fortran</h3>
+        <h4>What is Fortran?</h4>
+        <p>Fortran is a dinosaur code language. It was released around 65 years ago (date of writing) by John Backus and IBM for electric computing machines powered by the fossilized remains of dinosaurs who lived around 65 million years ago.</p>
+        <p>‘Too lazy’ to write assembly, Backus wrote this compiled imperative language to save himself time when composing complicated mathematical formulas, giving rise to the ‘Formula Translation’ language or FORTRAN. Nowadays, FORTRAN is considered too verbose by modern programming standards. Although much slower, Python might be considered the new Formula Translation language. Routines like the Fast Fourier Transform have been reduced to one line (np.fft()), where the number of lines of pure FORTRAN and assembly code needed are around 1 to 2 orders of magnitude longer, respectively.</p>
+        <h4>Why Fortran?</h4>
+        <p>Fortran is fast. Many legacy applications rely on Fortran for reasons related to speed and compatibility.</p>
+        <h3>The Good Type of Profiling</h3>
+        <h4>How can we test the speed of our code?</h4>
+        <p>Profiling is a strategy to monitor the performance of one’s code. Results often show the time spent in individual routines, the number of calls, as well as the order in which routines have been accessed.</p>
+        <h3>Profiling Fortran with gprof</h3>
+        <p>Fortran must first be compiled with the following, additional flags:</p>
+        <pre><code data-lang="bash"><span style="color: #4b69c6">...</span> -pg fcheck=bounds,mem<br></code></pre>
+        <p>The ‘fcheck’ option allows the compiler to produce warnings for attempts at accessing undefined memory, etc.</p>
+        <p>Once compiled, run your code as usual:</p>
+        <pre><code data-lang="bash"><span style="color: #4b69c6">./yourcode</span> <br></code></pre>
+        <p>A file named ‘gmon.out’ will be created in the current directory. To see the results of the profiling</p>
+        <pre><code data-lang="bash"><span style="color: #4b69c6">gprof</span> -l -b ./yourcode <span style="color: #d73948">></span> gprof.log<br></code></pre>
+        <p>The -g and -l flags in the compilation and profiling steps, respectively, allow for a line by line analysis of time spent during computation. Without these options, the profiler will show total time spent in each subroutine.</p>
+      </section>
+    </article>
+  </body>
+</html>
