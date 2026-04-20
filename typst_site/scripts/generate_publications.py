@@ -92,7 +92,7 @@ def generate() -> None:
         "",
         "= Publications",
         "",
-        "Peer-reviewed articles and preprints generated from `assets/citations.csv`.",
+        "Peer-reviewed articles and preprints.",
         "",
     ]
 
