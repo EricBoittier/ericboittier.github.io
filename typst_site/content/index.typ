@@ -32,7 +32,7 @@ I am Eric Boittier, a scientist and software builder working at the interface of
   )
 ]
 - #link("/publications/kernelmdcm/")[Kernel-based Minimal Distributed Charges: A Conformationally Dependent ESP-Model for Molecular Simulations] \
-  Placeholder summary: machine-learned charge assignment for molecular simulation fidelity.#footnote[Extra note: this paper explores conformationally adaptive electrostatics for simulation accuracy.]
+  This study introduces a kernel-based framework for predicting conformationally dependent distributed charges, enabling more physically faithful electrostatic representations in molecular simulations.#footnote[The method is designed to improve transferability across molecular conformations while preserving simulation efficiency.]
 
 #tufted.margin-note[
   #figure(
@@ -41,7 +41,7 @@ I am Eric Boittier, a scientist and software builder working at the interface of
   )
 ]
 - #link("/publications/mlccsdt/")[Transfer Learning to CCSD(T): Accurate Anharmonic Frequencies from Machine Learning Models] \
-  Placeholder summary: transfer learning to reach coupled-cluster-level vibrational accuracy.#footnote[Extra note: this work demonstrates transfer learning from lower-cost data toward high-level quantum targets.]
+  This work applies transfer learning to bridge lower-cost quantum data and CCSD(T)-level targets, delivering highly accurate anharmonic vibrational frequencies at reduced computational cost.#footnote[It demonstrates a practical route to near high-level quantum accuracy without prohibitive scaling.]
 
 #tufted.margin-note[
   #figure(
@@ -50,7 +50,7 @@ I am Eric Boittier, a scientist and software builder working at the interface of
   )
 ]
 - #link("/publications/mldatabase/")[Impact of the Characteristics of Quantum Chemical Databases on Machine Learning Prediction of Tautomerization Energies] \
-  Placeholder summary: how database composition affects model performance and transferability.#footnote[Extra note: this paper studies the relationship between dataset curation choices and generalization.]
+  This paper evaluates how database composition, chemical diversity, and sampling strategy influence machine-learning predictions of tautomerization energies.#footnote[The analysis highlights how data curation decisions directly affect generalization and model reliability.]
 
 == Blog Highlights
 
@@ -60,7 +60,7 @@ I am Eric Boittier, a scientist and software builder working at the interface of
   #text(size: 0.75em)[Figure B1. Fortran logo used for the profiling post.]
 ]
 - #link("/blog/profiling-fortan/")[Fortran is fast. Profile your code to make it faster!] \
-  Placeholder summary: practical notes on benchmarking and optimization workflow.#footnote[Extra note: this highlight focuses on profiling workflows and performance bottleneck analysis.]
+  A practical guide to performance engineering in scientific codebases, covering robust benchmarking, profiler-driven diagnosis, and targeted optimization strategies for Fortran workflows.#footnote[Emphasis is placed on reproducible timing methodology and actionable bottleneck identification.]
 
 #tufted.margin-note[
   #image("../assets/Jupyter_logo.svg.png", width: 40%, alt: "Jupyter logo for notebook post")
@@ -68,7 +68,7 @@ I am Eric Boittier, a scientist and software builder working at the interface of
   #text(size: 0.75em)[Figure B2. Jupyter logo for notebook-to-blog workflows.]
 ]
 - #link("/blog/test-notebook/")[From Jupyter to Blog] \
-  Placeholder summary: converting computational notebooks into maintainable posts.#footnote[Extra note: this highlight emphasizes reproducible publishing from notebook environments.]
+  A workflow for converting exploratory Jupyter notebooks into maintainable, publication-ready technical articles while preserving clarity, reproducibility, and narrative structure.#footnote[The approach separates experimentation from presentation to improve long-term maintainability.]
 
 #tufted.margin-note[
   #image("../assets/GP_bands.png", width: 40%, alt: "Gaussian process bands figure for Bayesian optimization post")
@@ -76,4 +76,4 @@ I am Eric Boittier, a scientist and software builder working at the interface of
   #text(size: 0.75em)[Figure B3. Gaussian process bands visualization.]
 ]
 - #link("/blog/notes/")[Notes on Bayesian Optimization] \
-  Placeholder summary: key heuristics for efficient model search in scientific workflows.#footnote[Extra note: this highlight references acquisition strategies and uncertainty-aware exploration.]
+  Concise notes on Bayesian optimization for scientific machine learning, with a focus on acquisition design, uncertainty-aware exploration, and efficient hyperparameter search under limited budgets.#footnote[The post emphasizes practical heuristics for balancing exploration and exploitation in real experiments.]
