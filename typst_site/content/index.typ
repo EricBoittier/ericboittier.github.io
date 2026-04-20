@@ -3,10 +3,11 @@
 
 = Machine Learning x Science
 
-#figure(
-  image("../assets/ericboittier.jpg", width: 120pt, alt: "Eric Boittier portrait"),
-  caption: [Eric Boittier],
-)
+#tufted.margin-note[
+  #image("../assets/ericboittier.jpg", width: 100%, alt: "Eric Boittier portrait")
+  #linebreak()
+  #text(size: 0.9em, fill: rgb("#555"))[Eric Boittier]
+]
 
 I am Eric Boittier, a scientist and software builder working at the interface of physical chemistry and machine learning.
 
