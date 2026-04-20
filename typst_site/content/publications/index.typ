@@ -3,7 +3,7 @@
 
 = Publications
 
-Peer-reviewed articles and preprints generated from `assets/citations.csv`.
+Peer-reviewed articles and preprints generated.
 
 == 2026
 - Cluster Models for Next‐Generation, Machine‐Learning‐Based Energy Functions for Molecular Simulations  \
