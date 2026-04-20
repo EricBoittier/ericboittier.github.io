@@ -15,28 +15,6 @@
 
 I am Eric Boittier, a scientist and software builder working at the interface of physical chemistry and machine learning.
 
-// This site is the Typst migration of my previous markdown-based site, with posts, publications, and CV content unified in a single static stack.
-
-// == Explore
-// - #link("/blog/")[Posts]
-// - #link("/publications/")[Publications]
-// - #link("/cv/")[Curriculum Vitae]
-// - #link("/contact/")[Contact]
-// - #link("/all-posts/")[Archive]
-
-// == About
-
-// Eric Boittier is a scientific software architect focused on deep learning applications for chemistry and molecular simulation.
-
-// === Interests
-// - Deep learning
-// - Drug discovery
-// - Physical chemistry
-// - Method development for molecular dynamics
-
-// === Background
-// - Ph.D. in Chemistry, University of Basel
-// - B. Adv. Sci. (Chemistry), University of Queensland
 
 == Profiles
 - #link("https://github.com/ericboittier")[GitHub]
