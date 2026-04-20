@@ -4,22 +4,81 @@
 = Machine Learning x Science
 
 #tufted.margin-note[
-  #image("../assets/ericboittier.jpg", width: 100%, alt: "Eric Boittier portrait")
-]
-
-#tufted.margin-note[
   #text(size: 0.9em, weight: "medium")[Eric Boittier]
 ]
 
 I am Eric Boittier, a scientist and software builder working at the interface of physical chemistry and machine learning.
 
-This site is the Typst migration of my previous markdown-based site, with posts, publications, projects, and CV content unified in a single static stack.
+This site is the Typst migration of my previous markdown-based site, with posts, publications, and CV content unified in a single static stack.
 
 == Explore
-- #link("/about/")[About]
 - #link("/blog/")[Posts]
 - #link("/publications/")[Publications]
-- #link("/projects/")[Projects]
 - #link("/cv/")[Curriculum Vitae]
 - #link("/contact/")[Contact]
 - #link("/all-posts/")[Archive]
+
+== About
+
+Eric Boittier is a scientific software architect focused on deep learning applications for chemistry and molecular simulation.
+
+=== Interests
+- Deep learning
+- Drug discovery
+- Physical chemistry
+- Method development for molecular dynamics
+
+=== Background
+- Ph.D. in Chemistry, University of Basel
+- B. Adv. Sci. (Chemistry), University of Queensland
+
+=== Profiles
+- #link("https://github.com/ericboittier")[GitHub]
+- #link("https://scholar.google.co.uk/citations?user=pAQXUFcAAAAJ")[Google Scholar]
+- #link("https://www.linkedin.com/in/ericboittier")[LinkedIn]
+
+== Blog Highlights
+
+#tufted.margin-note[
+  #rect(width: 100%, height: 1.6cm, fill: luma(95%), stroke: luma(70%))
+  #text(size: 0.8em)[Figure B1: Runtime profile sketch placeholder.]
+]
+- #link("/blog/profiling-fortan/")[Fortran is fast. Profile your code to make it faster!] \
+  Placeholder summary: practical notes on benchmarking and optimization workflow.
+
+#tufted.margin-note[
+  #rect(width: 100%, height: 1.6cm, fill: luma(95%), stroke: luma(70%))
+  #text(size: 0.8em)[Figure B2: Notebook pipeline placeholder.]
+]
+- #link("/blog/test-notebook/")[From Jupyter to Blog] \
+  Placeholder summary: converting computational notebooks into maintainable posts.
+
+#tufted.margin-note[
+  #rect(width: 100%, height: 1.6cm, fill: luma(95%), stroke: luma(70%))
+  #text(size: 0.8em)[Figure B3: Bayesian optimization placeholder.]
+]
+- #link("/blog/notes/")[Notes on Bayesian Optimization] \
+  Placeholder summary: key heuristics for efficient model search in scientific workflows.
+
+== Paper Highlights
+
+#tufted.margin-note[
+  #rect(width: 100%, height: 1.6cm, fill: luma(95%), stroke: luma(70%))
+  #text(size: 0.8em)[Figure P1: Charge model schematic placeholder.]
+]
+- #link("/publications/kernelmdcm/")[Kernel-based Minimal Distributed Charges: A Conformationally Dependent ESP-Model for Molecular Simulations] \
+  Placeholder summary: machine-learned charge assignment for molecular simulation fidelity.
+
+#tufted.margin-note[
+  #rect(width: 100%, height: 1.6cm, fill: luma(95%), stroke: luma(70%))
+  #text(size: 0.8em)[Figure P2: Transfer-learning curve placeholder.]
+]
+- #link("/publications/mlccsdt/")[Transfer Learning to CCSD(T): Accurate Anharmonic Frequencies from Machine Learning Models] \
+  Placeholder summary: transfer learning to reach coupled-cluster-level vibrational accuracy.
+
+#tufted.margin-note[
+  #rect(width: 100%, height: 1.6cm, fill: luma(95%), stroke: luma(70%))
+  #text(size: 0.8em)[Figure P3: Dataset diversity map placeholder.]
+]
+- #link("/publications/mldatabase/")[Impact of the Characteristics of Quantum Chemical Databases on Machine Learning Prediction of Tautomerization Energies] \
+  Placeholder summary: how database composition affects model performance and transferability.
