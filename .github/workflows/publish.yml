@@ -23,8 +23,16 @@ jobs:
       - name: Build Typst site
         run: make html
         working-directory: typst_site
-      - name: Verify build output
-        run: ls -la typst_site/_site
+      - name: Validate build artifact
+        run: |
+          set -euo pipefail
+          test -d typst_site/_site
+          test -f typst_site/_site/index.html
+          test -s typst_site/_site/index.html
+          # Ensure the artifact is not effectively empty.
+          [ "$(find typst_site/_site -mindepth 1 | wc -l)" -gt 1 ]
+          touch typst_site/_site/.nojekyll
+          ls -la typst_site/_site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -10,6 +10,18 @@ make html
 
 Generated HTML is written to `_site/`.
 
+## Preview locally (production-like)
+
+Do not open `_site/index.html` directly with `file://...`; absolute URLs like `/assets/...` will not resolve the same way as GitHub Pages.
+
+Use the local server target instead:
+
+```bash
+make preview
+```
+
+Then open [http://localhost:8000](http://localhost:8000). This gives the same URL/path behavior as production for CSS and links.
+
 ## Directory structure
 
 - `config.typ` — site template config and header links

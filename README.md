@@ -13,6 +13,7 @@ Source repository for [ericboittier.github.io](https://ericboittier.github.io), 
 ```bash
 cd typst_site
 make html
+make preview
 ```
 
 Generated files are written to `typst_site/_site/`.
