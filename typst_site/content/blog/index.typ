@@ -17,8 +17,6 @@ Read posts directly from this timeline, or open each dedicated page from the tit
   #link("/blog/profiling-fortan/")[2022-08-17 · Fortran is fast]
   #linebreak()
   #link("/blog/notes/")[2022-08-01 · Notes on Bayesian Optimization]
-  #linebreak()
-  #link("/blog/papertest/")[2022-08-17 · Paper (Draft Archive)]
 ]
 
 #let render-post(path) = {
@@ -68,5 +66,3 @@ Read posts directly from this timeline, or open each dedicated page from the tit
 #linebreak()
 #linebreak()
 #linebreak()
-
-#timeline-entry("2022-08-17", "Paper (Draft Archive)", "/blog/papertest/", "papertest/post.md")

@@ -4,6 +4,15 @@
 
 = Eric Boittier, Ph.D.
 
+#link("/assets/EricBoittier_CV.pdf")[
+  #box(
+    fill: rgb("#0A66C2"),
+    inset: (x: 0.7em, y: 0.35em),
+    radius: 4pt,
+    [#text(fill: white, weight: "semibold")[Download CV (PDF)]],
+  )
+]
+
 #tufted.margin-note[
   Scientific Software Architect -- Deep Learning Applications \
   Location: Arlesheim, BL 4144 \
