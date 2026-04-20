@@ -10,6 +10,18 @@ make html
 
 Generated HTML is written to `_site/`.
 
+## Publications From CSV
+
+The publications page is generated from `assets/citations.csv`.
+
+Regenerate just the publications Typst file:
+
+```bash
+make publications
+```
+
+`make html` will also regenerate publications automatically before building pages.
+
 ## Preview locally (production-like)
 
 Do not open `_site/index.html` directly with `file://...`; absolute URLs like `/assets/...` will not resolve the same way as GitHub Pages.
