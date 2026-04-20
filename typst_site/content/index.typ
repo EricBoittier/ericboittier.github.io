@@ -40,22 +40,19 @@ Eric Boittier is a scientific software architect focused on deep learning applic
 == Blog Highlights
 
 #tufted.margin-note[
-  #rect(width: 100%, height: 1.6cm, fill: luma(95%), stroke: luma(70%))
-  #text(size: 0.8em)[Figure B1: Runtime profile sketch placeholder.]
+  #text(size: 0.8em)[Figure B1 (placeholder): Runtime profile sketch.]
 ]
 - #link("/blog/profiling-fortan/")[Fortran is fast. Profile your code to make it faster!] \
   Placeholder summary: practical notes on benchmarking and optimization workflow.
 
 #tufted.margin-note[
-  #rect(width: 100%, height: 1.6cm, fill: luma(95%), stroke: luma(70%))
-  #text(size: 0.8em)[Figure B2: Notebook pipeline placeholder.]
+  #text(size: 0.8em)[Figure B2 (placeholder): Notebook to publication pipeline.]
 ]
 - #link("/blog/test-notebook/")[From Jupyter to Blog] \
   Placeholder summary: converting computational notebooks into maintainable posts.
 
 #tufted.margin-note[
-  #rect(width: 100%, height: 1.6cm, fill: luma(95%), stroke: luma(70%))
-  #text(size: 0.8em)[Figure B3: Bayesian optimization placeholder.]
+  #text(size: 0.8em)[Figure B3 (placeholder): Bayesian optimization search trace.]
 ]
 - #link("/blog/notes/")[Notes on Bayesian Optimization] \
   Placeholder summary: key heuristics for efficient model search in scientific workflows.
@@ -63,22 +60,19 @@ Eric Boittier is a scientific software architect focused on deep learning applic
 == Paper Highlights
 
 #tufted.margin-note[
-  #rect(width: 100%, height: 1.6cm, fill: luma(95%), stroke: luma(70%))
-  #text(size: 0.8em)[Figure P1: Charge model schematic placeholder.]
+  #text(size: 0.8em)[Figure P1 (placeholder): Charge model schematic.]
 ]
 - #link("/publications/kernelmdcm/")[Kernel-based Minimal Distributed Charges: A Conformationally Dependent ESP-Model for Molecular Simulations] \
   Placeholder summary: machine-learned charge assignment for molecular simulation fidelity.
 
 #tufted.margin-note[
-  #rect(width: 100%, height: 1.6cm, fill: luma(95%), stroke: luma(70%))
-  #text(size: 0.8em)[Figure P2: Transfer-learning curve placeholder.]
+  #text(size: 0.8em)[Figure P2 (placeholder): Transfer-learning performance curve.]
 ]
 - #link("/publications/mlccsdt/")[Transfer Learning to CCSD(T): Accurate Anharmonic Frequencies from Machine Learning Models] \
   Placeholder summary: transfer learning to reach coupled-cluster-level vibrational accuracy.
 
 #tufted.margin-note[
-  #rect(width: 100%, height: 1.6cm, fill: luma(95%), stroke: luma(70%))
-  #text(size: 0.8em)[Figure P3: Dataset diversity map placeholder.]
+  #text(size: 0.8em)[Figure P3 (placeholder): Dataset diversity map.]
 ]
 - #link("/publications/mldatabase/")[Impact of the Characteristics of Quantum Chemical Databases on Machine Learning Prediction of Tautomerization Energies] \
   Placeholder summary: how database composition affects model performance and transferability.
