@@ -6,11 +6,14 @@
 #tufted.margin-note[
   #image("../assets/ericboittier-github.jpg", width: 65%, alt: "Eric Boittier")
   #linebreak()
-  #link("https://github.com/ericboittier")[🐙 GitHub] #text(size: 0.85em, weight: "semibold")[ > Public code contributions]
+  #image("../assets/icon-github.svg", width: 0.85em, alt: "GitHub icon")
+  #link("https://github.com/ericboittier")[ GitHub] #text(size: 0.85em, weight: "semibold")[ > Public code contributions]
   #linebreak()
-  #link("https://scholar.google.co.uk/citations?user=pAQXUFcAAAAJ")[🎓 Google Scholar] #text(size: 0.85em, weight: "semibold")[ > Research and publications]
+  #image("../assets/icon-googlescholar.svg", width: 0.85em, alt: "Google Scholar icon")
+  #link("https://scholar.google.co.uk/citations?user=pAQXUFcAAAAJ")[ Google Scholar] #text(size: 0.85em, weight: "semibold")[ > Research and publications]
   #linebreak()
-  #link("https://www.linkedin.com/in/ericboittier")[💼 LinkedIn] #text(size: 0.85em, weight: "semibold")[ > Network, experience and education]
+  #image("../assets/icon-linkedin.svg", width: 0.85em, alt: "LinkedIn icon")
+  #link("https://www.linkedin.com/in/ericboittier")[ LinkedIn] #text(size: 0.85em, weight: "semibold")[ > Network, experience and education]
 ]
 
 I am a scientist and software engineer working at the interface of physical chemistry and machine learning.
