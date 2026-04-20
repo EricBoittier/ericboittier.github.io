@@ -23,6 +23,9 @@ I am a scientist and software engineer working at the interface of physical chem
 #linebreak()
 #text(size: 0.85em, weight: "semibold")[Below you can find some of my recent publications and blog posts.]
 #linebreak()
+#linebreak()
+#linebreak()
+#linebreak()
 == Paper Highlights
 
 
