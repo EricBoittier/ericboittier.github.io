@@ -5,8 +5,10 @@
 
 #tufted.margin-note[
   #image("../assets/ericboittier.jpg", width: 100%, alt: "Eric Boittier portrait")
-  #linebreak()
-  #text(size: 0.9em, fill: rgb("#555"))[Eric Boittier]
+]
+
+#tufted.margin-note[
+  #text(size: 0.9em, weight: "medium")[Eric Boittier]
 ]
 
 I am Eric Boittier, a scientist and software builder working at the interface of physical chemistry and machine learning.
