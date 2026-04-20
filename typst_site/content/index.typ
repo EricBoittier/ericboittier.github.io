@@ -38,39 +38,12 @@ I am Eric Boittier, a scientist and software builder working at the interface of
 // - Ph.D. in Chemistry, University of Basel
 // - B. Adv. Sci. (Chemistry), University of Queensland
 
-// === Profiles
-// - #link("https://github.com/ericboittier")[GitHub]
-// - #link("https://scholar.google.co.uk/citations?user=pAQXUFcAAAAJ")[Google Scholar]
-// - #link("https://www.linkedin.com/in/ericboittier")[LinkedIn]
+== Profiles
+- #link("https://github.com/ericboittier")[GitHub]
+- #link("https://scholar.google.co.uk/citations?user=pAQXUFcAAAAJ")[Google Scholar]
+- #link("https://www.linkedin.com/in/ericboittier")[LinkedIn]
 
-== Blog Highlights
 
-#tufted.margin-note[
-  #figure(
-    image("../assets/Fortran_logo.svg", width: 60%, alt: "Fortran logo for profiling post"),
-    caption: [Figure B1. Fortran logo used for the profiling post.]
-  )
-]
-- #link("/blog/profiling-fortan/")[Fortran is fast. Profile your code to make it faster!] \
-  Placeholder summary: practical notes on benchmarking and optimization workflow.#footnote[Extra note: this highlight focuses on profiling workflows and performance bottleneck analysis.]
-
-#tufted.margin-note[
-  #figure(
-    image("../assets/Jupyter_logo.svg.png", width: 60%, alt: "Jupyter logo for notebook post"),
-    caption: [Figure B2. Jupyter logo for notebook-to-blog workflows.]
-  )
-]
-- #link("/blog/test-notebook/")[From Jupyter to Blog] \
-  Placeholder summary: converting computational notebooks into maintainable posts.#footnote[Extra note: this highlight emphasizes reproducible publishing from notebook environments.]
-
-#tufted.margin-note[
-  #figure(
-    image("../assets/GP_bands.png", width: 100%, alt: "Gaussian process bands figure for Bayesian optimization post"),
-    caption: [Figure B3. Gaussian process bands visualization.]
-  )
-]
-- #link("/blog/notes/")[Notes on Bayesian Optimization] \
-  Placeholder summary: key heuristics for efficient model search in scientific workflows.#footnote[Extra note: this highlight references acquisition strategies and uncertainty-aware exploration.]
 
 == Paper Highlights
 
@@ -100,3 +73,29 @@ I am Eric Boittier, a scientist and software builder working at the interface of
 ]
 - #link("/publications/mldatabase/")[Impact of the Characteristics of Quantum Chemical Databases on Machine Learning Prediction of Tautomerization Energies] \
   Placeholder summary: how database composition affects model performance and transferability.#footnote[Extra note: this paper studies the relationship between dataset curation choices and generalization.]
+
+== Blog Highlights
+
+#tufted.margin-note[
+  #image("../assets/Fortran_logo.svg", width: 40%, alt: "Fortran logo for profiling post")
+  #linebreak()
+  #text(size: 0.75em)[Figure B1. Fortran logo used for the profiling post.]
+]
+- #link("/blog/profiling-fortan/")[Fortran is fast. Profile your code to make it faster!] \
+  Placeholder summary: practical notes on benchmarking and optimization workflow.#footnote[Extra note: this highlight focuses on profiling workflows and performance bottleneck analysis.]
+
+#tufted.margin-note[
+  #image("../assets/Jupyter_logo.svg.png", width: 40%, alt: "Jupyter logo for notebook post")
+  #linebreak()
+  #text(size: 0.75em)[Figure B2. Jupyter logo for notebook-to-blog workflows.]
+]
+- #link("/blog/test-notebook/")[From Jupyter to Blog] \
+  Placeholder summary: converting computational notebooks into maintainable posts.#footnote[Extra note: this highlight emphasizes reproducible publishing from notebook environments.]
+
+#tufted.margin-note[
+  #image("../assets/GP_bands.png", width: 40%, alt: "Gaussian process bands figure for Bayesian optimization post")
+  #linebreak()
+  #text(size: 0.75em)[Figure B3. Gaussian process bands visualization.]
+]
+- #link("/blog/notes/")[Notes on Bayesian Optimization] \
+  Placeholder summary: key heuristics for efficient model search in scientific workflows.#footnote[Extra note: this highlight references acquisition strategies and uncertainty-aware exploration.]
