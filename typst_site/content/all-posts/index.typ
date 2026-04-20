@@ -12,6 +12,3 @@
 
 == Publications
 - #link("/publications/")[All publications]
-
-== Projects
-- #link("/projects/")[All projects]

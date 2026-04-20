@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-label="Float placeholder">
+  <rect width="640" height="360" fill="#f3f4f6"/>
+  <rect x="12" y="12" width="616" height="336" fill="none" stroke="#9ca3af" stroke-width="3" stroke-dasharray="10 8"/>
+  <line x1="12" y1="12" x2="628" y2="348" stroke="#d1d5db" stroke-width="3"/>
+  <line x1="628" y1="12" x2="12" y2="348" stroke="#d1d5db" stroke-width="3"/>
+  <text x="320" y="190" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#374151">
+    Figure Placeholder
+  </text>
+</svg>
