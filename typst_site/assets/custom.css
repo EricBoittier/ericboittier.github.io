@@ -1,10 +1,12 @@
 :root {
   --bg: #fcfcf8;
   --surface: #ffffff;
-  --text: #1f2430;
+  --text: #2a3140;
   --muted: #5f6878;
   --link: #1e56b6;
+  --link-hover: #17479a;
   --link-visited: #5b3aa3;
+  --font-body: "Charter", "Bitstream Charter", "URW Bookman", "Palatino Linotype", "Book Antiqua", Georgia, serif;
   --border: #dde2ea;
   --nav-hover: rgba(31, 36, 48, 0.08);
   --note-bg: rgba(31, 36, 48, 0.04);
@@ -15,10 +17,12 @@
   color-scheme: light;
   --bg: #fcfcf8;
   --surface: #ffffff;
-  --text: #1f2430;
+  --text: #2a3140;
   --muted: #5f6878;
   --link: #1e56b6;
+  --link-hover: #17479a;
   --link-visited: #5b3aa3;
+  --font-body: "Charter", "Bitstream Charter", "URW Bookman", "Palatino Linotype", "Book Antiqua", Georgia, serif;
   --border: #dde2ea;
   --nav-hover: rgba(31, 36, 48, 0.08);
   --note-bg: rgba(31, 36, 48, 0.04);
@@ -32,7 +36,9 @@
   --text: #e7ecf4;
   --muted: #a8b3c7;
   --link: #8ab4ff;
+  --link-hover: #abc9ff;
   --link-visited: #d7b6ff;
+  --font-body: "et-book", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   --border: #2a3344;
   --nav-hover: rgba(231, 236, 244, 0.12);
   --note-bg: rgba(231, 236, 244, 0.1);
@@ -43,14 +49,30 @@ html,
 body {
   background: var(--bg);
   color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  text-shadow: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 a {
   color: var(--link);
+  text-shadow: none !important;
+  background-image: none !important;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.14em;
 }
 
 a:visited {
   color: var(--link-visited);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--link-hover);
 }
 
 p,
