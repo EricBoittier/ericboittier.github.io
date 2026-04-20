@@ -96,6 +96,11 @@ header nav .theme-toggle:focus-visible {
   color: var(--muted);
 }
 
+/* Add one blank-line of spacing between consecutive margin notes. */
+.marginnote + .marginnote {
+  margin-top: 1em;
+}
+
 .marginnote img {
   border: 1px solid var(--border);
   border-radius: 6px;
