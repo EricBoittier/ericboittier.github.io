@@ -1,1 +1,91 @@
-/* Modify this file to add your own custom styles */
+:root {
+  --bg: #fcfcf8;
+  --surface: #ffffff;
+  --text: #1f2430;
+  --muted: #5f6878;
+  --link: #1e56b6;
+  --border: #dde2ea;
+  --nav-hover: rgba(31, 36, 48, 0.08);
+  --note-bg: rgba(31, 36, 48, 0.04);
+  --code-bg: #f3f6fa;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+a,
+a:visited {
+  color: var(--link);
+}
+
+p,
+li {
+  color: var(--text);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text);
+}
+
+header nav a:hover,
+header nav a:focus-visible {
+  background: var(--nav-hover);
+}
+
+.marginnote {
+  color: var(--muted);
+}
+
+.marginnote img {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+}
+
+.marginnote p {
+  margin-top: 0.35rem;
+  color: var(--muted);
+}
+
+pre,
+code {
+  background: var(--code-bg);
+  border-radius: 4px;
+}
+
+pre {
+  border: 1px solid var(--border);
+  padding: 0.65rem 0.8rem;
+}
+
+/* Footnote hover contrast in light mode */
+.footnote-ref,
+.footnote-ref + .marginnote {
+  --highlight-weak: var(--note-bg);
+  --highlight-strong: rgba(31, 36, 48, 0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1117;
+    --surface: #151a23;
+    --text: #e7ecf4;
+    --muted: #a8b3c7;
+    --link: #8ab4ff;
+    --border: #2a3344;
+    --nav-hover: rgba(231, 236, 244, 0.12);
+    --note-bg: rgba(231, 236, 244, 0.1);
+    --code-bg: #18202c;
+  }
+
+  /* Keep math readable after tufted's inversion */
+  [role="math"] {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
