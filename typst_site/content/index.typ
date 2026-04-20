@@ -46,19 +46,19 @@ I am Eric Boittier, a scientist and software builder working at the interface of
 == Blog Highlights
 
 #tufted.margin-note[
-  #image("../assets/blog-highlight-1.svg", width: 100%, alt: "Blog figure B1 placeholder with caption")
+  #image("../assets/Fortran_logo.svg", width: 100%, alt: "Fortran logo for profiling post")
 ]
 - #link("/blog/profiling-fortan/")[Fortran is fast. Profile your code to make it faster!] \
   Placeholder summary: practical notes on benchmarking and optimization workflow.
 
 #tufted.margin-note[
-  #image("../assets/blog-highlight-2.svg", width: 100%, alt: "Blog figure B2 placeholder with caption")
+  #image("../assets/Jupyter_logo.svg.png", width: 100%, alt: "Jupyter logo for notebook post")
 ]
 - #link("/blog/test-notebook/")[From Jupyter to Blog] \
   Placeholder summary: converting computational notebooks into maintainable posts.
 
 #tufted.margin-note[
-  #image("../assets/blog-highlight-3.svg", width: 100%, alt: "Blog figure B3 placeholder with caption")
+  #image("../assets/GP_bands.png", width: 100%, alt: "Gaussian process bands figure for Bayesian optimization post")
 ]
 - #link("/blog/notes/")[Notes on Bayesian Optimization] \
   Placeholder summary: key heuristics for efficient model search in scientific workflows.
@@ -66,19 +66,19 @@ I am Eric Boittier, a scientist and software builder working at the interface of
 == Paper Highlights
 
 #tufted.margin-note[
-  #image("../assets/float-placeholder.svg", width: 100%, alt: "Figure placeholder")
+  #image("../assets/images_medium_ct4c00759_0010.gif", width: 100%, alt: "KernelMDCM publication figure")
 ]
 - #link("/publications/kernelmdcm/")[Kernel-based Minimal Distributed Charges: A Conformationally Dependent ESP-Model for Molecular Simulations] \
   Placeholder summary: machine-learned charge assignment for molecular simulation fidelity.
 
 #tufted.margin-note[
-  #image("../assets/float-placeholder.svg", width: 100%, alt: "Figure placeholder")
+  #image("../assets/images_medium_ct1c00249_0008.gif", width: 100%, alt: "MLCCSDT publication figure")
 ]
 - #link("/publications/mlccsdt/")[Transfer Learning to CCSD(T): Accurate Anharmonic Frequencies from Machine Learning Models] \
   Placeholder summary: transfer learning to reach coupled-cluster-level vibrational accuracy.
 
 #tufted.margin-note[
-  #image("../assets/float-placeholder.svg", width: 100%, alt: "Figure placeholder")
+  #image("../assets/images_medium_ct1c00363_0012.gif", width: 100%, alt: "MLDATABASE publication figure")
 ]
 - #link("/publications/mldatabase/")[Impact of the Characteristics of Quantum Chemical Databases on Machine Learning Prediction of Tautomerization Energies] \
   Placeholder summary: how database composition affects model performance and transferability.
