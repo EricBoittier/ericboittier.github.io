@@ -4,6 +4,7 @@
   --text: #1f2430;
   --muted: #5f6878;
   --link: #1e56b6;
+  --link-visited: #5b3aa3;
   --border: #dde2ea;
   --nav-hover: rgba(31, 36, 48, 0.08);
   --note-bg: rgba(31, 36, 48, 0.04);
@@ -17,6 +18,7 @@
   --text: #1f2430;
   --muted: #5f6878;
   --link: #1e56b6;
+  --link-visited: #5b3aa3;
   --border: #dde2ea;
   --nav-hover: rgba(31, 36, 48, 0.08);
   --note-bg: rgba(31, 36, 48, 0.04);
@@ -30,6 +32,7 @@
   --text: #e7ecf4;
   --muted: #a8b3c7;
   --link: #8ab4ff;
+  --link-visited: #d7b6ff;
   --border: #2a3344;
   --nav-hover: rgba(231, 236, 244, 0.12);
   --note-bg: rgba(231, 236, 244, 0.1);
@@ -42,9 +45,12 @@ body {
   color: var(--text);
 }
 
-a,
-a:visited {
+a {
   color: var(--link);
+}
+
+a:visited {
+  color: var(--link-visited);
 }
 
 p,
@@ -67,8 +73,10 @@ header nav a:focus-visible {
 header nav .theme-toggle {
   color: inherit;
   font-family: inherit;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
+  font-weight: 600;
   line-height: 1.2;
+  min-width: 2.1rem;
   border: 1px solid var(--border);
   border-radius: 0.2rem;
   background: var(--surface);

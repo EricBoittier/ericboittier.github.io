@@ -37,8 +37,8 @@
     }
     const current = effectiveTheme();
     const next = current === "dark" ? "light" : "dark";
-    const label = next === "light" ? "Light mode" : "Dark mode";
-    button.textContent = label;
+    const icon = next === "light" ? "☀" : "☾";
+    button.textContent = icon;
     button.setAttribute("aria-label", `Switch to ${next} mode`);
     button.title = `Switch to ${next} mode`;
   }
