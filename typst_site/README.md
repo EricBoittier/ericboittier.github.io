@@ -1,33 +1,32 @@
-# Tufted
+# Typst Site
 
-A static website template built using Typst's experimental HTML export. Requires no external dependencies other than basic `make`.
+This is the active website source for `ericboittier.github.io`, built with Typst using the Tufted web template.
 
-![Tufted website](assets/devices.webp)
+## Build
 
-## Installation & Usage
-
-Initialize the template from the Typst package registry:
-
-```shell
-typst init @preview/tufted:0.1.1
-```
-
-To build the website, run:
-
-```shell
+```bash
 make html
 ```
 
-Explore the `content/` folder for examples.
+Generated HTML is written to `_site/`.
 
-## Links
+## Directory structure
 
-- [tufted.vsheg.com](https://tufted.vsheg.com) — live demo and docs of the latest stable version
-- [dev.tufted.vsheg.com](https://dev.tufted.vsheg.com) — current dev version
-- [Repository on GitHub](https://github.com/vsheg/tufted) — source code, issues, and contributions
-- [Typst Universe](https://typst.app/universe/package/tufted) — template page
-- [Tufte CSS](https://edwardtufte.github.io/tufte-css/) — used for styling, loaded automatically from a CDN
+- `config.typ` — site template config and header links
+- `assets/` — static CSS assets copied into `_site/assets`
+- `content/index.typ` — homepage
+- `content/about/` — about page
+- `content/blog/` — blog index and post pages
+- `content/publications/` — publication index and per-paper pages
+- `content/projects/` — project index and project pages
+- `content/cv/` — CV page and bibliography files
+- `content/contact/` — contact page
+- `content/all-posts/` — archive page
+- `content/arxiv-tinder/` — arXiv Tinder route page
+- `content/privacy/` — privacy placeholder page
+- `content/terms/` — terms placeholder page
 
-## License
+## Notes
 
-The source code is available on [GitHub](https://github.com/vsheg/tufted) under the [MIT License](https://github.com/vsheg/tufted/blob/main/LICENSE). The template in the `template/` directory uses the more permissive [MIT-0](https://opensource.org/licenses/MIT-0) license.
+- Markdown-backed migrated posts keep source text in local `post.md` files and render via `cmarker`.
+- GitHub Pages deployment is handled from the repository root workflow and publishes this folder's `_site/` output.
