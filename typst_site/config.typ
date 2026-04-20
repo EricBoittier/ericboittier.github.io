@@ -10,7 +10,6 @@
     "/cv/": "CV",
     "/contact/": "Contact",
     "/all-posts/": "Archive",
-    "/arxiv-tinder/": "arXiv Tinder",
   ),
   title: "Eric Boittier",
 )

@@ -3,6 +3,8 @@
 
 = Machine Learning x Science
 
+#image("../assets/ericboittier.jpg", width: 120pt, alt: "Eric Boittier portrait")
+
 I am Eric Boittier, a scientist and software builder working at the interface of physical chemistry and machine learning.
 
 This site is the Typst migration of my previous markdown-based site, with posts, publications, projects, and CV content unified in a single static stack.
@@ -15,4 +17,3 @@ This site is the Typst migration of my previous markdown-based site, with posts,
 - #link("/cv/")[Curriculum Vitae]
 - #link("/contact/")[Contact]
 - #link("/all-posts/")[Archive]
-- #link("/arxiv-tinder/")[arXiv Tinder]
