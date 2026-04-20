@@ -4,13 +4,13 @@
 = Machine Learning x Science
 
 #tufted.margin-note[
-  #image("../assets/portrait-placeholder.svg", width: 100%, alt: "Portrait placeholder")
+  #image("../assets/ericboittier-github.jpg", width: 100%, alt: "Eric Boittier GitHub profile photo")
 ]
 
 #tufted.margin-note[
   #text(size: 0.9em, weight: "medium")[Eric Boittier]
   #linebreak()
-  #text(size: 0.8em)[Portrait placeholder (replace with your photo).]
+  #text(size: 0.8em)[GitHub profile photo.]
 ]
 
 I am Eric Boittier, a scientist and software builder working at the interface of physical chemistry and machine learning.
@@ -46,19 +46,19 @@ I am Eric Boittier, a scientist and software builder working at the interface of
 == Blog Highlights
 
 #tufted.margin-note[
-  #image("../assets/float-placeholder.svg", width: 100%, alt: "Figure placeholder")
+  #image("../assets/blog-highlight-1.svg", width: 100%, alt: "Blog figure B1 placeholder with caption")
 ]
 - #link("/blog/profiling-fortan/")[Fortran is fast. Profile your code to make it faster!] \
   Placeholder summary: practical notes on benchmarking and optimization workflow.
 
 #tufted.margin-note[
-  #image("../assets/float-placeholder.svg", width: 100%, alt: "Figure placeholder")
+  #image("../assets/blog-highlight-2.svg", width: 100%, alt: "Blog figure B2 placeholder with caption")
 ]
 - #link("/blog/test-notebook/")[From Jupyter to Blog] \
   Placeholder summary: converting computational notebooks into maintainable posts.
 
 #tufted.margin-note[
-  #image("../assets/float-placeholder.svg", width: 100%, alt: "Figure placeholder")
+  #image("../assets/blog-highlight-3.svg", width: 100%, alt: "Blog figure B3 placeholder with caption")
 ]
 - #link("/blog/notes/")[Notes on Bayesian Optimization] \
   Placeholder summary: key heuristics for efficient model search in scientific workflows.
