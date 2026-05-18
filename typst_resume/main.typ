@@ -227,14 +227,9 @@ figure(
     show: right-col-theme
 
     section(
-      theme: (gutter-width: 42pt),
+      theme: (gutter-width: 30pt),
       [Invited Talks],
       {
-        entry(
-          [2024],
-          [#par(justify: true)[*`Bridging Machine Learning and Electrostatic Models`* \ #text(fill: maroon)[Swiss Chemical Society] \ #text(fill: maroon)[Machine~Learning Group] \ Lausanne, CH]],
-          none,
-        )
         entry(
           [2025],
           [#par(justify: true)[*`Mixing Machine Learned with Empirical Energy Functions`* \ #text(fill: maroon)[apoCHARMM Meeting]  \ 
@@ -242,23 +237,29 @@ figure(
                     none,
 
         )
+        entry(
+          [2024],
+          [#par(justify: true)[*`Bridging Machine Learning and Electrostatic Models`* \ #text(fill: maroon)[Swiss Chemical Society] \ #text(fill: maroon)[Machine~Learning Group] \ Lausanne, CH]],
+          none,
+        )
+
       }
     )
   },
 )
- #v(-30pt) 
+ #v(-20pt) 
 #{
   show: theme.with(section-style: "underlined");
   
   section(
     theme: (gutter-width: 1pt, column-gutter: 0.5em),
-    [Open Source Contributions],
+    [Open Source Software Development],
     [
   #v(-10pt)    
-            #grid(
+  #grid(
         columns: (0.1fr, 1fr),
         
-        [#qr-code("https://github.com/EricBoittier", width: 0.85cm)],
+        [#qr-code("https://github.com/EricBoittier", width: 1.1cm)],
         [#par[Community-driven/open-source contributions available on GitHub (\u{40}EricBoittier)]],
         
         )
@@ -283,7 +284,7 @@ figure(
         )],
                 [#list(
           // [Cheminformatics software RDKit: bug fixes for C++ and python layers, hackathons and feature requests],
-          [Complete #text(fill: maroon)[Open Source Computational Pipeline] (mmml) for Density Functional Theory and Molecular Dynamics simulations with machine learned interaction potentials],
+          [#text(fill: maroon)[Open Source Computational Pipeline] (mmml) for Density Functional Theory and Molecular Dynamics with machine learned interaction potentials written in JAX (python)],
           // [Frontend development for a literature carousel UI for browsing arXiv preprints, using React and Tailwind CSS],
         )],
       )

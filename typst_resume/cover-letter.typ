@@ -28,8 +28,6 @@
 // --- Header ---
 #block[
   #text(size: 1.4em, weight: "bold", fill: accent-color)[Eric Boittier, Ph.D.]
-  #v(4pt)
-  #text(size: 0.95em)[Scientific Software Architect — Deep Learning Applications]
   #v(12pt)
   #text(size: 10pt, fill: rgb("666"))[
     Arlesheim, BL 4144 \u{00B7}
@@ -41,7 +39,7 @@
 #v(24pt)
 
 // --- Date ---
-#text(fill: rgb("666"))[March 16, 2025]
+#text(fill: rgb("666"))[#datetime.today().display("[day] [month repr:long] [year]")]
 
 #v(12pt)
 
