@@ -15,7 +15,7 @@
 )
 
 #align(center)[
-  Post Doctoral Scientist in Artificial Intelligence building Machine Learning Models and Scientific Software Solutions for Research in the Natural Sciences.
+  Postdoctoral candidate combining deep learning \& scientific software with interests in NLP, agentic pipelines, \& rigorous validation for biomedical and research workflows.
 ]
 
 = Education
@@ -48,14 +48,14 @@
 
 #exp(
   role: "Researcher",
-  org: "University of Basel — Department of Chemistry",
+  org: "University of Basel --- Department of Chemistry",
   location: "Basel, CH",
   start: datetime(year: 2020, month: 1, day: 1),
   end: "Present",
   details: [
     - Deep learning for graph-structured scientific data and computational chemistry.
     - Design, training, and validation of machine-learned potentials and distributed charge models.
-    - Top performance in the HyDRA computational vibrational spectroscopy challenge (Physical Chemistry Chemical Physics, 2023).
+    - Strong performance in community challenges (HyDRA vibrational spectroscopy; Physical Chemistry Chemical Physics, 2023).
   ],
 )
 
@@ -77,7 +77,7 @@
 #award(
   date: datetime(year: 2023, month: 1, day: 1),
   name: "HyDRA vibrational spectroscopy challenge",
-  from: "First place — Physical Chemistry Chemical Physics community challenge issue",
+  from: "First place --- Physical Chemistry Chemical Physics community challenge issue",
 )
 */
 
@@ -94,7 +94,7 @@
 
 #pres(
   authors: ([Eric Boittier]),
-  title: [Mixing machine-learned and empirical energy functions],
+  title: [Mixing machine learned and empirical energy functions],
   conference: [apoCHARMM Meeting, NIH],
   date: datetime(year: 2025, month: 1, day: 1),
   location: "Boston, US (online)",
@@ -124,7 +124,7 @@
   ),
   (
     "Machine Learning\t\t\t",
-    ([JAX], [PyTorch], [TensorFlow],  [scikit-learn], [Weights & Biases]),
+    ([JAX], [PyTorch], [TensorFlow], [scikit-learn], [Weights \& Biases]),
   ),
   (
     "Engineering\t\t\t",
